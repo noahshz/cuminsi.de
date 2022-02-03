@@ -1,0 +1,38 @@
+* {
+    font-family: 'Inter', sans-serif; 
+    color: white;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background: rgb(27, 27, 27);
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    height: 10%;
+
+    border: 2px solid red;
+}
+.header .column {
+    width: 100%;
+}
+.header .column.center {
+    display: flex;
+    justify-content: center;
+}
+
+/* Content */
+.content {
+    border: 2px solid green;
+    height: 80%;
+}
+
+/* Footer */
+.footer {
+    border: 2px solid yellow;
+    height: 8%;
+}
