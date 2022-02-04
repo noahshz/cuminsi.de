@@ -21,7 +21,7 @@
         <div class="column right">
             <p>Registieren</p>
             <p>Login</p>
-            <img src="img/profile.png" width="50">
+            <img src="img/no_profile_found.png" width="50">
         </div>
     </div>
     <div class="content">
