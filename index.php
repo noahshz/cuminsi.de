@@ -19,14 +19,16 @@
             <h1>Cuminsi.de</h1>
         </div>
         <div class="column right">
-
+            <p>Registieren</p>
+            <p>Login</p>
+            <img src="img/profile.png" width="50">
         </div>
     </div>
     <div class="content">
-        <p>sad</p>
+        <p>Haupt Content</p>
     </div>
     <div class="footer">
-        <p></p>
+        <p>Impressum in so</p>
     </div>
 </body>
 </html>
