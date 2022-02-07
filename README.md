@@ -25,7 +25,7 @@ https://cuminside.herokuapp.com/
 * edit username
 * edit password
 * delete account
-
+-
 # Error codes for signup
 - 1001: Benutzername bereits vorhanden
 - 1002: Email bereits vorhanden
