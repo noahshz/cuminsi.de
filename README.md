@@ -5,10 +5,10 @@
 https://cuminside.herokuapp.com/
 
 # ToDo's
-* sign up (create user)
+* sign up (create user) ✔
 * signup - error codes anzeigen
 * email verification
-* password en/decryption
+* password en/decryption ✔
 * login
 * password reset/forgotten
 
