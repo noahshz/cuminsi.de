@@ -17,6 +17,11 @@ https://cuminside.herokuapp.com/
 * edit post (only verified)
 * save post (only logged in)
 * like post (only logged in)
+--------
+* edit email
+* edit username
+* edit password
+* delete account
 
 # Error codes for signup
 - 1001: Benutzername bereits vorhanden
