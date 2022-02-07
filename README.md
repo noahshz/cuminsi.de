@@ -17,3 +17,8 @@ https://cuminside.herokuapp.com/
 - 1001: Benutzername bereits vorhanden
 - 1002: Email bereits vorhanden
 - 1003: Passwörter stimmen nicht überein
+
+# dev - reminder
+- everyboy can SEE posts
+- only logged in users (not verified) can save posts oder like posts
+- only verified users can post posts
