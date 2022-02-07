@@ -8,6 +8,5 @@ https://cuminside.herokuapp.com/
 * sign up (create user)
 * email verification
 * password en/decryption
-
 * login
 * password reset/forgotten
