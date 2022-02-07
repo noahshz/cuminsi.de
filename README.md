@@ -18,7 +18,7 @@ https://cuminside.herokuapp.com/
 * save post (only logged in)
 * like post (only logged in)
 
-# -
+#
 # Error codes for signup
 - 1001: Benutzername bereits vorhanden
 - 1002: Email bereits vorhanden
