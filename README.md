@@ -12,6 +12,12 @@ https://cuminside.herokuapp.com/
 * password en/decryption ✔
 * login
 * password reset/forgotten
+--------
+* create post (only verified)
+* delete post (only verified)
+* edit post (only verified)
+* save post (only logged in)
+* like post (only logged in)
 
 # Error codes for signup
 - 1001: Benutzername bereits vorhanden
