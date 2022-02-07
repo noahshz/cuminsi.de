@@ -8,11 +8,11 @@
 </head>
 <body>
     <form method="post" action="logic.php?action=signup">
-        <input name="username" type="text" placeholder="Username">
-        <input name="email" type="email" placeholder="Email">
-        <input name="password_1" type="password" placeholder="Password">
-        <input name="password_2" type="password" placeholder="Repeat Password">
-        <input name="signup" type="submit" value="Sign up">
+        <input name="signup_username" type="text" placeholder="Username" required>
+        <input name="signup_email" type="email" placeholder="Email" required>
+        <input name="signup_password_1" type="password" placeholder="Password" required>
+        <input name="signup_password_2" type="password" placeholder="Repeat Password" required>
+        <input name="signup_submit" type="submit" value="Sign up">
     </form>
 </body>
 </html>
