@@ -10,7 +10,7 @@ https://cuminside.herokuapp.com/
 * signup - error codes anzeigen ✔
 * email verification
 * password en/decryption ✔
-* login
+* login (with username/email && password)
 * password reset/forgotten
 
 ### post-management
