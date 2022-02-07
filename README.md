@@ -8,7 +8,6 @@ https://cuminside.herokuapp.com/
 * sign up (create user) ✔
 * signup - error codes anzeigen
 * email verification
-* beiträge können nicht erstellt werden, wenn nicht verifiziert
 * password en/decryption ✔
 * login
 * password reset/forgotten
@@ -19,6 +18,7 @@ https://cuminside.herokuapp.com/
 * save post (only logged in)
 * like post (only logged in)
 
+# -
 # Error codes for signup
 - 1001: Benutzername bereits vorhanden
 - 1002: Email bereits vorhanden
