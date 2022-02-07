@@ -12,14 +12,14 @@ https://cuminside.herokuapp.com/
 * password en/decryption ✔
 * login
 * password reset/forgotten
---------
+
 ## post-management
 * create post (only verified)
 * delete post (only verified)
 * edit post (only verified)
 * save post (only logged in)
 * like post (only logged in)
---------
+
 ## user-management
 * edit email
 * edit username
