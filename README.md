@@ -30,6 +30,7 @@ https://cuminside.herokuapp.com/
 - 1001: Benutzername bereits vorhanden
 - 1002: Email bereits vorhanden
 - 1003: Passwörter stimmen nicht überein
+
 - 2001: Benutzername nicht vorhanden
 --------
 # dev - functionality/structure
