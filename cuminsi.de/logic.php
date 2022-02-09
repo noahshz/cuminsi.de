@@ -78,6 +78,10 @@
 
             //Step before
             // ...
+            $session = new Session();
+            if($session->isset()) {
+                header('Location: index.php');
+            }
 
             //Step 1
             $stmt = $pdo->prepare("SELECT COUNT(`username`) FROM `users` WHERE `username` = :username;");
@@ -106,10 +110,9 @@
             $stmt->bindParam(':username', $_POST['login_username']);
             $stmt->execute();
 
-            session_start();
-            $_SESSION['uid'] = $stmt->fetchAll()[0]['id'];
-            $_SESSION['username']  = $_POST['login_username'];
-            $_SESSION['email'] = $stmt->fetchAll()[0]['email'];
+            $session->set('uid', $stmt->fetchAll()[0]['id']);
+            $session->set('username', $_POST['login_username']);
+            $session->set('email', $stmt->fetchAll()[0]['email']);
 
             //Step 4
             header('Location: index.php');
@@ -117,8 +120,8 @@
             break;
 
         case 'logout':
-            session_start();
-            session_destroy();
+            $session = new Session();
+            $session->destroy();
             header('Location: index.php');
             break;
     }

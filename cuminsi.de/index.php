@@ -17,10 +17,12 @@
     <div class="header">
         <div class="column left">
             <?php
-                session_start();
-
-                if(isset($_SESSION['uid'])) {
-                    echo $_SESSION['uid'];
+                $session = new Session();
+                
+                if($session->isset()) {
+                    echo "Eingeloggt als: " . $session->get('username');
+                } else {
+                    echo "ausgeloggt";
                 }
             ?>
         </div>
