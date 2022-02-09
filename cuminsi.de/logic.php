@@ -4,6 +4,8 @@
     switch($_GET['action']) {
         case 'signup':
             /*
+                Step before: Check if session is active
+
                 Step 1: Check if username already exists
                 Step 2: Check if email is already used
                 Step 3: Check if password1 and password2 are equal
@@ -14,6 +16,12 @@
                 Step 5: Send VerificationMail
                 Step Success: Redirect to some page with success message
             */
+            $session = new Session();
+            if($session->isset()) {
+                //session = active => not allowed to create new user
+                header('Location: index.php');
+                exit();
+            }
 
             //Step 1
             $stmt = $pdo->prepare("SELECT COUNT(`username`) FROM `users` WHERE `username` = :username;");
@@ -110,6 +118,11 @@
             $stmt->bindParam(':username', $_POST['login_username']);
             $stmt->execute();
 
+            /*
+                in this sector, all session variables are set
+
+                add variables with $session->set('varname', 'value');
+            */
             $session->set('uid', $stmt->fetchAll()[0]['id']);
             $session->set('username', $_POST['login_username']);
             $session->set('email', $stmt->fetchAll()[0]['email']);
@@ -120,9 +133,17 @@
             break;
 
         case 'logout':
+            /*
+                Step 1: Check if Session is active -> session destroy
+                Step 2 & else: redirect
+            */
+
             $session = new Session();
-            $session->destroy();
+            if($session->isset()) {
+                $session->destroy();
+            }
             header('Location: index.php');
+
             break;
     }
 ?>

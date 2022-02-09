@@ -16,6 +16,12 @@
 <body>
     <div class="header">
         <div class="column left">
+
+        </div>
+        <div class="column center">
+            <h1>Cuminsi.de</h1>
+        </div>
+        <div class="column right">
             <?php
                 $session = new Session();
                 
@@ -25,11 +31,6 @@
                     echo "ausgeloggt";
                 }
             ?>
-        </div>
-        <div class="column center">
-            <h1>Cuminsi.de</h1>
-        </div>
-        <div class="column right">
             <a href="signup.php">Registieren</a>
             <a href="login.php">Login</a>
             <a href="logout.php">Logout</a>
