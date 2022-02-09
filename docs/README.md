@@ -1,8 +1,9 @@
 # Documentation
 
-## General structure
+## classes.php
 
-- constants.php => definitions of constants
-- requirements.php => defines all requirements
-- db.php => defintion of database connection string
-- functions.php => defintions of global functions
+- in "classes.php" all global classes are defined
+# Session-Class
+Functions:
+    - construct: starts the session
+    - set(varname, value): sets an session variable
