@@ -64,7 +64,34 @@
             break;
 
         case 'login':
+            /*
+                Step before: check if user is already logged in
 
+                Step 1: Check if username exists
+                Step 2: Check if hashed input_password equals to password in database AND equals to the username
+                Step 3: start session AND set session data (through function)
+                Step 4: redirect to index
+
+                Step else:
+                    print error code
+            */
+
+            //Step 1
+            $stmt = $pdo->prepare("SELECT COUNT(`username`) FROM `users` WHERE `username` = :username;");
+            $stmt->bindParam(':username', $_POST['login_username']);
+            $stmt->execute();
+
+            if($stmt->fetchAll()[0][0] == "0") {
+                //Benutzername exisitiert nicht
+                header('Location: login.php?error_code=2001');
+                exit();
+            }
+
+            //Step 2
+            // ...
+            echo $_POST['login_username'];
+            echo $_POST['login_password'];
+            
             break;
     }
 ?>
