@@ -67,7 +67,7 @@
 
             //Sign up Success
             //Step Success ->
-            header('Location: login.php');
+            header('Location: login.php?message=9001');
 
             break;
 
@@ -142,7 +142,7 @@
             if($session->isset()) {
                 $session->destroy();
             }
-            header('Location: index.php');
+            header('Location: login.php?message=9002');
 
             break;
     }

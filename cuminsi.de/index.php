@@ -27,13 +27,14 @@
                 
                 if($session->isset()) {
                     echo "Eingeloggt als: " . $session->get('username');
+                    //logout is available
+                    echo '<a href="logout.php">Logout</a>';
                 } else {
                     echo "ausgeloggt";
+                    echo '<a href="signup.php">Registieren</a>';
+                    echo '<a href="login.php">Login</a>';
                 }
             ?>
-            <a href="signup.php">Registieren</a>
-            <a href="login.php">Login</a>
-            <a href="logout.php">Logout</a>
             <img src="img/no_profile_found.png" width="50">
         </div>
     </div>

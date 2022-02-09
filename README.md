@@ -26,13 +26,17 @@ https://cuminside.herokuapp.com/
 * edit password
 * delete account
 --------
-# Error codes for signup
+# Error codes for signup ($_GET['error_code'])
 - 1001: Benutzername bereits vorhanden
 - 1002: Email bereits vorhanden
 - 1003: Passwörter stimmen nicht überein
 
 - 2001: Benutzername nicht vorhanden
 - 2002: Passwort falsch
+
+# Message codes ($_GET['message'])
+- 9001: User erfolgreich erstellt
+- 9002: erfolgreich ausgeloggt
 --------
 # dev - functionality/structure
 - everyboy can SEE posts

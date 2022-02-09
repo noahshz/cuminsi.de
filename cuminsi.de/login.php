@@ -22,6 +22,16 @@
                     break;
             }
         }
+        if(isset($_GET['message'])) {
+            switch($_GET['message']) {
+                case '9001':
+                    echo "Benutzer erfolgreich erstellt sie können sich nun einloggen.";
+                    break;
+                case '9002':
+                    echo "Sie haben sich erfolgreich ausgeloggt. Sie können sich nun wieder einloggen.";
+                    break;
+            }
+        }
     ?>
 </body>
 </html>
