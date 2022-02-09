@@ -44,16 +44,17 @@
             }
 
             //Step 4
-            $password = encode($_POST['signup_password_2']);
-
+            $hashed_upw = hash("sha256", $_POST['signup_password_2']);
+            
             $stmt = $pdo->prepare("INSERT INTO `users` (`username`, `email`, `password`, `verified`) VALUES (:username, :email, :pw, 'false');");
             $stmt->bindParam(':username', $_POST['signup_username']);
             $stmt->bindParam(':email', $_POST['signup_email']);
-            $stmt->bindParam(':pw', $password);
+            $stmt->bindParam(':pw', $hashed_upw);
             $stmt->execute();
 
             //Sign up Success
             //Step Success ->
+
             break;
     }
 ?>
