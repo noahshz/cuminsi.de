@@ -20,7 +20,7 @@
         </div>
         <div class="column right">
             <a href="signup.php">Registieren</a>
-            <p>Login</p>
+            <a href="login.php">Login</a>
             <img src="img/no_profile_found.png" width="50">
         </div>
     </div>

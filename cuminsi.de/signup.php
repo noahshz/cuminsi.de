@@ -7,6 +7,7 @@
     <title>SignUp</title>
 </head>
 <body>
+    <a href="index.php">Zurück</a>
     <form method="post" action="logic.php?action=signup">
         <input name="signup_username" type="text" placeholder="Username" required>
         <input name="signup_email" type="email" placeholder="Email" required>
