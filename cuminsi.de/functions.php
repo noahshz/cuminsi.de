@@ -1,24 +1,21 @@
 <?php
+/*
+functionality: sends data to url and request the response of page
+example usage: for error messages
+
+example:
+
 $data = array('error_code' => 1001);
+post_request("URL/error_messages.php", $data);
 
-request("URL/error_messages.php", $data);
-
-function request($url, &$data) {
-    // build the urlencoded data
+*/
+function post_request($url, $data) {
     $postvars = http_build_query($data);
-
-    // open connection
     $curl = curl_init();
-
-    // set the url, number of POST vars, POST data
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_POST, count($data));
     curl_setopt($curl, CURLOPT_POSTFIELDS, $postvars);
-
-    // execute post
     $result = curl_exec($curl);
-
-    // close connection
     curl_close($curl);
 }
 ?>

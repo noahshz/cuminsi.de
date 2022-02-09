@@ -19,7 +19,7 @@
             <h1>Cuminsi.de</h1>
         </div>
         <div class="column right">
-            <p>Registieren</p>
+            <a href="signup.php">Registieren</a>
             <p>Login</p>
             <img src="img/no_profile_found.png" width="50">
         </div>

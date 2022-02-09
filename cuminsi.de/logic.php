@@ -11,6 +11,7 @@
                 Step else: redirect back to signup with $_GET['error_message']
 
                 Step 4: Insert values into db with hashed pw
+                Step 5: Send VerificationMail
                 Step Success: Redirect to some page with success message
             */
 
@@ -52,6 +53,10 @@
             $stmt->bindParam(':pw', $hashed_upw);
             $stmt->execute();
 
+            //Step 5
+            //...
+
+            
             //Sign up Success
             //Step Success ->
 
