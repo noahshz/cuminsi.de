@@ -20,3 +20,8 @@
 > in db.php the mysql connection string is stored and executed
 >
 > the connection string is available with $pdo
+---
+# functions.php
+> in functions.php all global functions are defined
+
+    - request_post              ....
