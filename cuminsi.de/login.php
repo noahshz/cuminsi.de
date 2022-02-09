@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Login</h1>
+    <a href="index.php">Zurück</a>
     <form method="post" action="logic.php?action=login">
         <input name="login_username" type="text" placeholder="Username" required>
         <input name="login_password" type="password" placeholder="Password" required>

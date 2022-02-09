@@ -88,9 +88,24 @@
             }
 
             //Step 2
-            // ...
-            echo $_POST['login_username'];
-            echo $_POST['login_password'];
+            $stmt = $pdo->prepare("SELECT `password` FROM `users` WHERE `username` = :username;");
+            $stmt->bindParam(':username', $_POST['login_username']);
+            $stmt->execute();
+
+            if($stmt->fetchAll()[0][0] != hash(HASH, $_POST['login_password'])) {
+                //Benutzername exisitiert nicht
+                header('Location: login.php?error_code=2002');
+                exit();
+            }
+
+            //Step 3
+            //... CALL FUNCTION FOR SESSION MANAGEMENT
+            $session = new Session();
+            $session->set('username', $_POST['input_username']);
+
+            //Step 4
+            //... REDIRECT
+            //header('Location: index.php');
             
             break;
     }

@@ -32,6 +32,7 @@ https://cuminside.herokuapp.com/
 - 1003: Passwörter stimmen nicht überein
 
 - 2001: Benutzername nicht vorhanden
+- 2002: Passwort falsch
 --------
 # dev - functionality/structure
 - everyboy can SEE posts
