@@ -76,6 +76,9 @@
                     print error code
             */
 
+            //Step before
+            // ...
+
             //Step 1
             $stmt = $pdo->prepare("SELECT COUNT(`username`) FROM `users` WHERE `username` = :username;");
             $stmt->bindParam(':username', $_POST['login_username']);
@@ -99,14 +102,24 @@
             }
 
             //Step 3
-            //... CALL FUNCTION FOR SESSION MANAGEMENT
-            $session = new Session();
-            $session->set('username', $_POST['input_username']);
+            $stmt = $pdo->prepare("SELECT `id`, `email` FROM `users` WHERE `username` = :username;");
+            $stmt->bindParam(':username', $_POST['login_username']);
+            $stmt->execute();
+
+            session_start();
+            $_SESSION['uid'] = $stmt->fetchAll()[0]['id'];
+            $_SESSION['username']  = $_POST['login_username'];
+            $_SESSION['email'] = $stmt->fetchAll()[0]['email'];
 
             //Step 4
-            //... REDIRECT
-            //header('Location: index.php');
+            header('Location: index.php');
             
+            break;
+
+        case 'logout':
+            session_start();
+            session_destroy();
+            header('Location: index.php');
             break;
     }
 ?>

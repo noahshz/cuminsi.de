@@ -1,3 +1,6 @@
+<?php
+    require 'requirements.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +16,13 @@
 <body>
     <div class="header">
         <div class="column left">
+            <?php
+                session_start();
 
+                if(isset($_SESSION['uid'])) {
+                    echo $_SESSION['uid'];
+                }
+            ?>
         </div>
         <div class="column center">
             <h1>Cuminsi.de</h1>
@@ -21,6 +30,7 @@
         <div class="column right">
             <a href="signup.php">Registieren</a>
             <a href="login.php">Login</a>
+            <a href="logout.php">Logout</a>
             <img src="img/no_profile_found.png" width="50">
         </div>
     </div>
