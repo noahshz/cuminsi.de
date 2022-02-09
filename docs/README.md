@@ -13,3 +13,9 @@
 ---
 # constants.php
 > in constants.php all global constans are defined
+
+    - HASH                      defines the used hash algorithm
+---
+# db.php
+> in db.php the mysql connection string is stored and executed
+> the connection string is available with $pdo
