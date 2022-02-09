@@ -2,7 +2,7 @@
 
 # classes.php
 > in "classes.php" all global classes are defined
----
+
 ## Session-Class
 ### Functions:
     - construct:                starts the session
@@ -11,3 +11,5 @@
     - destroy:                  unsets and destroys session
     - isset:                    checks if $_SESSION['uid'] is set
 ---
+# constants.php
+> in constants.php all global constans are defined
