@@ -18,4 +18,4 @@
 ---
 # db.php
 > in db.php the mysql connection string is stored and executed
-  the connection string is available with $pdo
+the connection string is available with $pdo
