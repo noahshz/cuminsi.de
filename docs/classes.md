@@ -4,20 +4,20 @@
 All global classes are stored in the **classes.php**. This file is automaticly included by using the **requirements.php**.
 <hr>
 
-### Session class
+# Session class
 
 The session class is used to handle the PHP-sessions more comfortable.
 By adding a constructor which starts a new session u can create a new one by initializing the class:
 
 	$session = new Session();
 
-**Set session variables:**
+## **Set session variables:**
 
 To set session variables u just call the method **set** where u pass the variablename and the value:
 
 	$session->set('username', 'dummy');
 
-**Get session variables:**
+## **Get session variables:**
 
 To get session variables u just call the method **get** where u pass the variablename:
 
@@ -25,7 +25,7 @@ To get session variables u just call the method **get** where u pass the variabl
 
 	Output: "dummy"
 
-**Check session activity:**
+## **Check session activity:**
 
 To check if the session is currently active u use the **isset** method.
 This method returns true or false.
@@ -34,7 +34,7 @@ This method returns true or false.
 	
 	Output: true
 
-**Destroy session:**
+## **Destroy session:**
 
 To destroy the session u use the **destroy** method:
 	
