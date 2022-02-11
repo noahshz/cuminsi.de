@@ -26,6 +26,9 @@
 
     //sends mail
     function send_verification_email(string $email, string $verification_code): void {
+        ini_set("SMTP", "aspmx.l.google.com");
+        ini_set("sendmail_from", VERIFICATION_SENDER_EMAIL_ADDRESS);
+
         // create the activation link
         $activation_link = APP_URL . "/verify.php?email=$email&activation_code=$verification_code";
 
@@ -40,6 +43,8 @@
                         <body>
                             <h1>Verify your account</h1>
                             <p>To verify your account, please click <a href="' . $activation_link . '">here</a> to continue.</p>
+                            <br>
+                            <p>If this mail is in spam folder, please move it to your inbox</p>
                         </body>
                         </html>
         ';
