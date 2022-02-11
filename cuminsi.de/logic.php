@@ -65,7 +65,11 @@
             $stmt->execute();
 
             //Step 5
-            send_verification_email($email, $verification_code);
+            try {
+                send_verification_email($email, $verification_code);
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
 
             //Sign up Success
             //Step Success ->
