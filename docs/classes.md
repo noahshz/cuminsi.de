@@ -10,20 +10,27 @@ By adding a constructor which starts a new session u can create a new one by ini
 
 	$session = new Session();
 
+**Set session variables:**
 To set session variables u just call the method **set** where u pass the variablename and the value:
 
 	$session->set('username', 'dummy');
+
+**Get session variables:**
 To get session variables u just call the method **get** where u pass the variablename:
 
 	echo $session->get('username');
 
 	Output: "dummy"
+
+**Check session activity:**
 To check if the session is currently active u use the **isset** method.
 This method returns true or false.
 
 	echo $session->isset();
 	
 	Output: true
+
+**Destroy session:**
 To destroy the session u use the **destroy** method:
 	
 	$session->destroy();
