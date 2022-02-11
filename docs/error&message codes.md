@@ -64,3 +64,6 @@ Via switch it is possible to **customize** all of the error codes:
  - > **9002**
    > "successfully logged out"
 
+ - > **9003**
+   > "successfully verified please log in again"
+

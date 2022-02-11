@@ -30,6 +30,9 @@
                 case '9002':
                     echo "Sie haben sich erfolgreich ausgeloggt. Sie können sich nun wieder einloggen.";
                     break;
+                case '9003':
+                    echo "erfolgreich verifiviert, bitte melden sie sich erneut an";
+                    break;
             }
         }
     ?>

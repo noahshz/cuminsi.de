@@ -32,18 +32,29 @@
         // set email subject & body
         $subject = 'Please verify your account';
 
-        $message = <<<MESSAGE
-                Hi,
-                Please click the following link to activate your account:
-                $activation_link
-                MESSAGE;
+        $message = '
+                Bitte verifizieren Sie ihren Account, indem Sie <a href="' . $activation_link . '">hier</a> klicken.
+            ';
+
+        $message = '<html>
+                        <body>
+                            <h1>Verify your account</h1>
+                            <p>To verify your account, please click <a href="' . $activation_link . '">here</a> to continue.</p>
+                        </body>
+                        </html>
+        ';
 
         // email header
-        $header = "From:" . VERIFICATION_SENDER_EMAIL_ADDRESS;
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=utf-8" . "\r\n";
+        $headers .= "From:" . VERIFICATION_SENDER_EMAIL_ADDRESS . "\r\n" .
+                    'Reply-To:' . VERIFICATION_SENDER_EMAIL_ADDRESS . "\r\n" .
+        "X-Mailer: PHP/" . phpversion();
 
         // send the email
         try {
-            mail($email, $subject, nl2br($message), $header);
+            //mail($email, $subject, nl2br($message), $headers);
+            mail($email, $subject, $message, $headers);
         } catch(Exception $e) {
             die($e->getMessage());
         }

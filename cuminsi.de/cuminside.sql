@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Erstellungszeit: 09. Feb 2022 um 21:52
+-- Erstellungszeit: 11. Feb 2022 um 22:51
 -- Server-Version: 10.3.31-MariaDB-0+deb10u1
 -- PHP-Version: 7.3.31-1~deb10u1
 
@@ -34,6 +34,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `verification_code` varchar(255) NOT NULL,
   `verified` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
