@@ -5,17 +5,25 @@ They are send from the **logic.php** to the target site. For example:
 
  - logic.php (action: logout) **---[9002]--->** login.php -> display transferred code
 
+<hr>
+
+### Sending codes
 In the logic.php you **send** the error/message code via GET method:
 
      header('Location: https://url.net/site?error_code=1001');
      header('Location: https://url.net/site?message=9002');
-
+ <hr>
+ 
+### Requesting codes
 To **request** and customize the error/message codes u need to check if the code isset via
 
 	if(isset($_GET['error_code']) {
 		echo $_GET['error_code'];
 	}
 
+<hr>
+
+### Cusomizing codes
 Via switch it is possible to **customize** all of the error codes:
 
     if(isset($_GET['error_code']) {
