@@ -1,5 +1,6 @@
 ﻿# error & message codes
 
+### Definition
 The error & message codes are there for the user as feedback on his actions.
 They are send from the **logic.php** to the target site. For example:
 
@@ -34,31 +35,32 @@ Via switch it is possible to **customize** all of the error codes:
 				echo 'email is already used';
 		}
     }
+  <hr>
+
+### Code list
 	
+**signup codes (error)**
 
-*signup codes (error)*
+ - > **1001**
+   > "user already exists"
+ - > **1002**
+   > "email is already used"
+ - > **1003**
+   > "the passwords aren't equal to each other"
 
-> **1001**
-> "user already exists"
+**login codes (error)**
 
-> **1002**
-> "email is already used"
+ - > **2001**
+   > "user does not exist"
+   
+ - > **2002**
+   > "password incorrect"
 
-> **1003**
-> "the passwords aren't equal to each other"
+**message codes**
 
-*login codes (error)*
+ - > **9001**
+   > "user succesfully created"
 
-> **2001**
-> "user does not exist"
+ - > **9002**
+   > "successfully logged out"
 
-> **2002**
-> "password incorrect"
-
-*message codes*
-
-> **9001**
-> "user succesfully created"
-
-> **9002**
-> "successfully logged out"
