@@ -1,44 +1,11 @@
-# cuminsi.de
+﻿# Documentation
 
-## page in progress...
+This documentation describes the functionality and the process of the [cuminsi.de](https://cuminsi.de) site.
+It is explicitly written for the developers so that they can understand and edit the program flow.
 
-https://cuminside.herokuapp.com/
+**Table of contens:**
 
-# ToDo's
-### session-management
-* sign up (create user) ✔
-* signup - error codes anzeigen ✔
-* email verification
-* password en/decryption ✔
-* login (with username/email && password)
-* password reset/forgotten
+ - [Error&Message
+   codes](https://github.com/noahshz/cuminsi.de/blob/main/docs/error&message%20codes.md)
+ - [Classes](https://github.com/noahshz/cuminsi.de/blob/main/docs/classes.md)
 
-### post-management
-* create post (only verified)
-* delete post (only verified)
-* edit post (only verified)
-* save post (only logged in)
-* like post (only logged in)
-
-### user-management
-* edit email
-* edit username
-* edit password
-* delete account
---------
-# Error codes for signup ($_GET['error_code'])
-- 1001: Benutzername bereits vorhanden
-- 1002: Email bereits vorhanden
-- 1003: Passwörter stimmen nicht überein
-
-- 2001: Benutzername nicht vorhanden
-- 2002: Passwort falsch
-
-# Message codes ($_GET['message'])
-- 9001: User erfolgreich erstellt
-- 9002: erfolgreich ausgeloggt
---------
-# dev - functionality/structure
-- everyboy can SEE posts
-- only logged in users (not verified) can save posts oder like posts
-- only verified users can post posts
