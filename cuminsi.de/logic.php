@@ -3,14 +3,6 @@
     
     switch($_GET['action']) {
         case 'signup':
-
-
-            //send_verification_email("noahhshz@gmail.com", "testcode");
-
-
-
-
-            
             /*
                 Step before: Check if session is active
 
@@ -21,7 +13,7 @@
                 Step else: redirect back to signup with $_GET['error_message']
 
                 Step 4: Insert values into db with hashed pw
-                Step 5: Send VerificationMail
+                Step 5: Send VerificationMail with code
                 Step Success: Redirect to some page with success message
             */
             $session = new Session();
@@ -61,17 +53,19 @@
             }
 
             //Step 4
+            $verification_code = generate_verification_code();
             $hashed_upw = hash(HASH, $_POST['signup_password_2']);
+            $email = str_replace(" ", "", $_POST['signup_email']);
             
-            $stmt = $pdo->prepare("INSERT INTO `users` (`username`, `email`, `password`, `verified`) VALUES (:username, :email, :pw, 'false');");
+            $stmt = $pdo->prepare("INSERT INTO `users` (`username`, `email`, `password`, `verification_code`, `verified`) VALUES (:username, :email, :pw, :verifycode, 'false');");
             $stmt->bindParam(':username', $_POST['signup_username']);
-            $stmt->bindParam(':email', $_POST['signup_email']);
+            $stmt->bindParam(':email', $email);
             $stmt->bindParam(':pw', $hashed_upw);
+            $stmt->bindParam(':verifycode', $verification_code);
             $stmt->execute();
 
             //Step 5
-            //...
-
+            send_verification_email($email, $verification_code);
 
             //Sign up Success
             //Step Success ->

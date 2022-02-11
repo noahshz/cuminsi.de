@@ -1,48 +1,52 @@
 <?php
-/*
-functionality: sends data to url and request the response of page
-example usage: for error messages
-
-example:
-
-$data = array('error_code' => 1001);
-post_request("URL/error_messages.php", $data);
-
-*/
-function post_request($url, $data): void {
-    $postvars = http_build_query($data);
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_POST, count($data));
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $postvars);
-    $result = curl_exec($curl);
-    curl_close($curl);
-}
-function generate_verification_code(): string {
-    return bin2hex(random_bytes(16));
-}
-function send_verification_email(string $email, string $verification_code): void {
-    // create the activation link
-    $activation_link = APP_URL . "/verify.php?email=$email&activation_code=$verification_code";
-
-    // set email subject & body
-    $subject = 'Please verify your account';
     /*
-    $message = <<<MESSAGE
-            Hi,
-            Please click the following link to activate your account:
-            $activation_link
-            MESSAGE;
-    */
-    $message = <<<MESSAGE
-            Hi,
-            Please click the following link to activate your cuminsi.de account:
-            [invalid]
-            MESSAGE;
-    // email header
-    $header = "From:" . VERIFICATION_SENDER_EMAIL_ADDRESS;
+    functionality: sends data to url and request the response of page
+    example usage: for error messages
 
-    // send the email
-    mail($email, $subject, nl2br($message), $header);
-}
+    example:
+
+    $data = array('error_code' => 1001);
+    post_request("URL/error_messages.php", $data);
+
+    */
+    function post_request($url, $data): void {
+        $postvars = http_build_query($data);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, count($data));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $postvars);
+        $result = curl_exec($curl);
+        curl_close($curl);
+    }
+
+    //generates random verification code
+    function generate_verification_code(): string {
+        return bin2hex(random_bytes(16));
+    }
+
+    //sends mail
+    function send_verification_email(string $email, string $verification_code): void {
+        // create the activation link
+        $activation_link = APP_URL . "/verify.php?email=$email&activation_code=$verification_code";
+
+        // set email subject & body
+        $subject = 'Please verify your account';
+
+        $message = <<<MESSAGE
+                Hi,
+                Please click the following link to activate your account:
+                $activation_link
+                MESSAGE;
+
+        // email header
+        $header = "From:" . VERIFICATION_SENDER_EMAIL_ADDRESS;
+
+        // send the email
+        try {
+            mail($email, $subject, nl2br($message), $header);
+        } catch(Exception $e) {
+            die($e->getMessage());
+        }
+
+    }
 ?>
