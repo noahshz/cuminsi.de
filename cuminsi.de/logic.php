@@ -3,6 +3,14 @@
     
     switch($_GET['action']) {
         case 'signup':
+
+
+            //send_verification_email("noahhshz@gmail.com", "testcode");
+
+
+
+
+            
             /*
                 Step before: Check if session is active
 
@@ -114,7 +122,7 @@
             }
 
             //Step 3
-            $stmt = $pdo->prepare("SELECT `id`, `email` FROM `users` WHERE `username` = :username;");
+            $stmt = $pdo->prepare("SELECT `id`, `email`, `verified` FROM `users` WHERE `username` = :username;");
             $stmt->bindParam(':username', $_POST['login_username']);
             $stmt->execute();
 
@@ -126,6 +134,7 @@
             $session->set('uid', $stmt->fetchAll()[0]['id']);
             $session->set('username', $_POST['login_username']);
             $session->set('email', $stmt->fetchAll()[0]['email']);
+            $session->set('verified', $stmt->fetchAll()[0]['verified']);
 
             //Step 4
             header('Location: index.php');
