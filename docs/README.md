@@ -1,27 +1,11 @@
-# Documentation
+﻿# Documentation
 
-# classes.php
-> in "classes.php" all global classes are defined
+This documentation describes the functionality and the process of the cuminsi.de site.
+It is explicitly written for the developers so that they can understand and edit the program flow.
 
-## Session-Class
-### Functions:
-    - construct:                starts the session
-    - set(varname, value):      sets an session variable
-    - get(varname):             returns the value of session variable
-    - destroy:                  unsets and destroys session
-    - isset:                    checks if $_SESSION['uid'] is set
----
-# constants.php
-> in constants.php all global constans are defined
+**Table of contens:**
 
-    - HASH                      defines the used hash algorithm
----
-# db.php
-> in db.php the mysql connection string is stored and executed
->
-> the connection string is available with $pdo
----
-# functions.php
-> in functions.php all global functions are defined
+ - [Error&Message
+   codes](https://github.com/noahshz/cuminsi.de/blob/main/docs/error&message%20codes.md)
+ - [Classes](https://github.com/noahshz/cuminsi.de/blob/main/docs/classes.md)
 
-    - request_post              ....
