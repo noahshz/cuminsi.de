@@ -39,9 +39,9 @@ This method returns true or false.
 To destroy the session u use the **destroy** method:
 	
 	$session->destroy();
-<hr>
 
-### Code:
+
+### *Code*:
 
      class Session {
 		function __construct() {
@@ -64,5 +64,6 @@ To destroy the session u use the **destroy** method:
 			return false;
 		}
 	}
+	
  <hr>
 
