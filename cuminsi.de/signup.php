@@ -16,18 +16,7 @@
         <input name="signup_submit" type="submit" value="Sign up">
     </form>
     <?php
-        if(isset($_GET['error_code'])) {
-            switch($_GET['error_code']) {
-                case '1001':
-                    echo "Der Benutzername ist bereits vorhanden. Bitte wählen sie einen anderen Benutzernamen aus.";
-                    break;
-                case '1002':
-                    echo "Die Email adresse wird bereits verwendet.";
-                    break;
-                case '1003':
-                    echo "Die eingegebenen Passwörter stimmen nicht überein.";
-            }
-        }
+        displayMessageOrError();
     ?>
 </body>
 </html>

@@ -19,12 +19,16 @@
         curl_close($curl);
     }
 
-    //generates random verification code
+    /*
+        function to generate random verification code
+    */
     function generate_verification_code(): string {
         return bin2hex(random_bytes(16));
     }
 
-    //sends mail
+    /*
+        function to send verifycationemail
+    */
     function send_verification_email(string $email, string $verification_code): void {
         ini_set("SMTP", "aspmx.l.google.com");
         ini_set("sendmail_from", VERIFICATION_SENDER_EMAIL_ADDRESS);
@@ -64,5 +68,45 @@
             die($e->getMessage());
         }
 
+    }
+
+    /*
+        Function for display error / message codes
+    */
+    function displayMessageOrError() {
+        if(isset($_GET['error_code'])) {
+            switch($_GET['error_code']) {
+                //Error Codes from signup
+                case '1001':
+                    echo "Der Benutzername ist bereits vorhanden. Bitte wählen sie einen anderen Benutzernamen aus.";
+                    break;
+                case '1002':
+                    echo "Die Email adresse wird bereits verwendet.";
+                    break;
+                case '1003':
+                    echo "Die eingegebenen Passwörter stimmen nicht überein.";
+                    break;
+                //Error-Codes from Login
+                case '2001':
+                    echo "Der Benutzer existiert nciht";
+                    break;
+            }
+        }
+        if(isset($_GET['message'])) {
+            switch($_GET['message']) {
+                //Message code from signup to login
+                case '9001':
+                    echo "Benutzer erfolgreich erstellt sie können sich nun einloggen.";
+                    break;
+                //Message code from logout to login
+                case '9002':
+                    echo "Sie haben sich erfolgreich ausgeloggt. Sie können sich nun wieder einloggen.";
+                    break;
+                //Message code from verify to login
+                case '9003':
+                    echo "erfolgreich verifiviert, bitte melden sie sich erneut an";
+                    break;
+            }
+        }
     }
 ?>

@@ -35,7 +35,6 @@
                     echo '<a href="login.php">Login</a>';
                 }
             ?>
-            <img src="img/no_profile_found.png" width="50">
         </div>
     </div>
     <div class="content">

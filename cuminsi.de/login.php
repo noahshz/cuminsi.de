@@ -15,26 +15,7 @@
         <input name="login_submit" type="submit" value="Login">
     </form>
     <?php
-        if(isset($_GET['error_code'])) {
-            switch($_GET['error_code']) {
-                case '2001':
-                    echo "Der Benutzer existiert nciht";
-                    break;
-            }
-        }
-        if(isset($_GET['message'])) {
-            switch($_GET['message']) {
-                case '9001':
-                    echo "Benutzer erfolgreich erstellt sie können sich nun einloggen.";
-                    break;
-                case '9002':
-                    echo "Sie haben sich erfolgreich ausgeloggt. Sie können sich nun wieder einloggen.";
-                    break;
-                case '9003':
-                    echo "erfolgreich verifiviert, bitte melden sie sich erneut an";
-                    break;
-            }
-        }
+        displayMessageOrError();
     ?>
 </body>
 </html>

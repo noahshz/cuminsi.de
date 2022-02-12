@@ -20,16 +20,4 @@
             return false;
         }
     }
-
-    class User { //todo
-        function __construct() {
-            //construtctor
-        }
-        function create($username, $email, $password) {
-            //create user
-        }
-        function getData($username) {
-            //get user details
-        }
-    }
 ?>
