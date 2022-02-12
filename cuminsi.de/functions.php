@@ -34,7 +34,7 @@
         ini_set("sendmail_from", VERIFICATION_SENDER_EMAIL_ADDRESS);
 
         // create the activation link
-        $activation_link = APP_URL . "/verify.php?email=$email&activation_code=$verification_code";
+        $activation_link = APP_URL . "/logic.php?action=verify&email=$email&activation_code=$verification_code";
 
         // set email subject & body
         $subject = 'Please verify your account';

@@ -154,5 +154,39 @@
             header('Location: login.php?message=9002');
 
             break;
+        
+        case 'verify':
+            $session = new Session();
+            /*
+                Step 1: Check if mail and activation_code isset
+                Step 2: Update verified where mail = mail and code = code
+                Step 3: set verificationcode = /
+                Step 4 destroy session and redirect to login
+
+            */
+            if(isset($_GET['email']) && isset($_GET['activation_code'])) {
+                $stmt = $pdo->prepare("UPDATE `users` SET `verified` = 'true' WHERE `email` = :email AND `verification_code` = :code;");
+                $stmt->bindParam(":email", $_GET['email']);
+                $stmt->bindParam(":code", $_GET['activation_code']);
+                $stmt->execute();
+        
+                $stmt = $pdo->prepare("UPDATE `users` SET `verification_code` = '/' WHERE `email` = :email;");
+                $stmt->bindParam(":email", $_GET['email']);
+                $stmt->execute();
+            }
+        
+            $session->destroy();
+
+            header('Location: login.php?message=9003');
+
+            break;
+
+        case 'resendverification':
+            /*
+                Step 1: create new vcerification key and update db
+                Step 2: send mail with new key
+            */
+
+            break;
     }
 ?>

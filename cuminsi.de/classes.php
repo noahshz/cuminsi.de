@@ -10,8 +10,13 @@
             return $_SESSION[$vname];
         }
         function destroy() {
-            session_unset();
-            session_destroy();
+            try {
+                session_unset();
+                session_destroy();
+            } catch(Exception $e) {
+                die($e->getMessage());
+            }
+
         }
         function isset() {
             if(isset($_SESSION['uid'])) {
