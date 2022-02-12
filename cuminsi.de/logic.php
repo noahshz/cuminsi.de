@@ -93,6 +93,7 @@
             //Step before
             // ...
             $session = new Session();
+
             if($session->isset()) {
                 header('Location: index.php');
             }
@@ -120,19 +121,20 @@
             }
 
             //Step 3
-            $stmt = $pdo->prepare("SELECT `id`, `email`, `verified` FROM `users` WHERE `username` = :username;");
+            $stmt = $pdo->prepare("SELECT `id`, `username`, `email`, `verified` FROM `users` WHERE `username` = :username;");
             $stmt->bindParam(':username', $_POST['login_username']);
             $stmt->execute();
 
+            $userdata[] = $stmt->fetchAll()[0];
             /*
                 in this sector, all session variables are set
 
                 add variables with $session->set('varname', 'value');
             */
-            $session->set('uid', $stmt->fetchAll()[0]['id']);
-            $session->set('username', $_POST['login_username']);
-            $session->set('email', $stmt->fetchAll()[0]['email']);
-            $session->set('verified', $stmt->fetchAll()[0]['verified']);
+            $session->set('uid', $userdata[0]['id']);
+            $session->set('username', $userdata[0]['username']);
+            $session->set('email', $userdata[0]['email']);
+            $session->set('verified', $userdata[0]['verified']);
 
             //Step 4
             header('Location: index.php');

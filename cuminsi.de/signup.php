@@ -16,6 +16,8 @@
         <input name="signup_submit" type="submit" value="Sign up">
     </form>
     <?php
+        require 'requirements.php';
+        
         displayMessageOrError();
     ?>
 </body>

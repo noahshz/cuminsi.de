@@ -29,6 +29,11 @@
                     echo "Eingeloggt als: " . $session->get('username');
                     //logout is available
                     echo '<a href="logout.php">Logout</a>';
+
+                    echo "uid: " . $session->get('uid') . "<br>";
+                    echo "Username: " . $session->get('username') . "<br>";
+                    echo "Email: " . $session->get('email') . "<br>";
+                    echo "Verified: " . $session->get('verified') . "<br>";
                 } else {
                     echo "ausgeloggt";
                     echo '<a href="signup.php">Registieren</a>';
