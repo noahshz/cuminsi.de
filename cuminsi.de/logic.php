@@ -192,13 +192,12 @@
             //Step before
             if($session->get('verified') == "true") {
                 header('Location: settings.php');
-                exit();
             }
 
             //Step 1
             $newVerifyCode = generate_verification_code();
 
-            $stmt = $pdo->prepare("UPDATE `users` SET `verification_code` = :newcode WHERE `uid` = :userid;");
+            $stmt = $pdo->prepare("UPDATE `users` SET `verification_code` = :newcode WHERE `id` = :userid;");
             $stmt->bindParam(":userid", $session->get('uid'));
             $stmt->bindParam(":newcode", $newVerifyCode);
             $stmt->execute();
