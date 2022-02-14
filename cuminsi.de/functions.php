@@ -90,11 +90,17 @@
                 case '2001':
                     echo "Der Benutzer existiert nciht";
                     break;
+                case '2002':
+                    echo "Password falsch";
+                    break;
             }
         }
         if(isset($_GET['message'])) {
             switch($_GET['message']) {
                 //Message code from signup to login
+                case '8001':
+                    echo "Die verify mail wurde erneut gesendet";
+                    break;
                 case '9001':
                     echo "Benutzer erfolgreich erstellt sie können sich nun einloggen.";
                     break;

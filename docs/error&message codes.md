@@ -58,6 +58,9 @@ Via switch it is possible to **customize** all of the error codes:
 
 **message codes**
 
+ - > **8001**
+   > "verification email resend"
+
  - > **9001**
    > "user succesfully created"
 

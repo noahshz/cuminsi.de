@@ -26,11 +26,12 @@
         echo "Verified: " . $session->get('verified') . "<br>";
         echo "<br>";
 
-
         if($session->get('verified') == "false") {
             echo "resend the verification email";
             echo "<a href='logic.php?action=resendverification'>send</a>";
         }
+        
+        displayMessageOrError();
     ?>
 </body>
 </html>

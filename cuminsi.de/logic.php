@@ -183,12 +183,35 @@
 
         case 'resendverification':
             /*
+                Step before: Check if user already verified
                 Step 1: create new vcerification key and update db
                 Step 2: send mail with new key
             */
+            $session = new Session();
 
+            //Step before
+            if($session->get('verified') == "true") {
+                header('Location: settings.php');
+                exit();
+            }
 
-            //ToDo
+            //Step 1
+            $newVerifyCode = generate_verification_code();
+
+            $stmt = $pdo->prepare("UPDATE `users` SET `verification_code` = :newcode WHERE `uid` = :userid;");
+            $stmt->bindParam(":userid", $session->get('uid'));
+            $stmt->bindParam(":newcode", $newVerifyCode);
+            $stmt->execute();
+
+            //Step 2
+            try {
+                send_verification_email($session->get('email'), $newVerifyCode);
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+            header('Location: settings.php?message=8001');
+            
             break;
     }
 ?>
