@@ -40,7 +40,7 @@
             $stmt->execute();
 
             if($stmt->fetchAll()[0][0] == "1") {
-                //Benutzername bereits vorhanden
+                //Email bereits vorhanden
                 header('Location: signup.php?error_code=1002');
                 exit();
             }
@@ -219,10 +219,56 @@
                 Step 1: check if input email already exists
                 
                 Step maybe: if email is changed -> set verified = false and create new token
-                
+
                 Step 2: update db with new mail
                 Step 3: update session variable 'email'
             */
+            if(!isset($_POST['settingsChangeEmail'])) {die("mail not set");}
+
+            $session = new Session();
+
+            //Step 1
+            $stmt = $pdo->prepare("SELECT COUNT(`email`) FROM `users` WHERE `email` = :newmail;");
+            $stmt->bindParam(":newmail", $_POST['settingsChangeEmail']);
+            $stmt->execute();
+
+            if($stmt->fetchAll()[0][0] == "1") {
+                //Email bereits vorhanden
+                header('Location: settings.php?error_code=1002');
+                exit();
+            }
+
+            //Step maybe
+            $newVerifyCode = generate_verification_code();
+
+            $stmt = $pdo->prepare("UPDATE `users` SET `verified` = 'false' WHERE `id` = :userid;");
+            $stmt->bindParam(":userid", $session->get('uid'));
+            $stmt->execute();
+
+            $session->set('verified', 'false');
+
+            $stmt = $pdo->prepare("UPDATE `users` SET `verification_code` = :newcode WHERE `id` = :userid;");
+            $stmt->bindParam(":userid", $session->get('uid'));
+            $stmt->bindParam(":newcode", $newVerifyCode);
+            $stmt->execute();
+
+            try {
+                send_verification_email($session->get('email'), $newVerifyCode);
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+            //Step 2
+            $stmt = $pdo->prepare("UPDATE `users` SET `email` = :newmail WHERE `id` = :userid;");
+            $stmt->bindParam(":userid", $session->get('uid'));
+            $stmt->bindParam(":newmail", $_POST['settingsChangeEmail']);
+            $stmt->execute();
+
+
+            //Step 3
+            $session->set('email', $_POST['settingsChangeEmail']);
+
+            header('Location: settings.php?message=8003');
 
             //TODO
 

@@ -93,17 +93,22 @@
                 case '2002':
                     echo "Password falsch";
                     break;
+                //Error codes from/to settings
+                case '8002':
+                    echo "erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert";
+                    break;
             }
         }
         if(isset($_GET['message'])) {
             switch($_GET['message']) {
-                //Message code from signup to login
+                //Message Code from/&to settings
                 case '8001':
                     echo "Die verify mail wurde erneut gesendet";
                     break;
-                case '8002':
-                    echo "erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert";
+                case '8003':
+                    echo "email wurde geändrt";
                     break;
+                //Message code from signup to login
                 case '9001':
                     echo "Benutzer erfolgreich erstellt sie können sich nun einloggen.";
                     break;
