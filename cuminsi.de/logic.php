@@ -264,7 +264,6 @@
             $stmt->bindParam(":newmail", $_POST['settingsChangeEmail']);
             $stmt->execute();
 
-
             //Step 3
             $session->set('email', $_POST['settingsChangeEmail']);
 
