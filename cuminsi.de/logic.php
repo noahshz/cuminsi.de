@@ -212,5 +212,20 @@
             header('Location: settings.php?message=8001');
             
             break;
+        
+        case 'changeUserMail':
+            /*
+                new mail: $_POST['settingsChangeEmail']
+                Step 1: check if input email already exists
+                
+                Step maybe: if email is changed -> set verified = false and create new token
+                
+                Step 2: update db with new mail
+                Step 3: update session variable 'email'
+            */
+
+            //TODO
+
+            break;
     }
 ?>

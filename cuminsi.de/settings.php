@@ -33,5 +33,10 @@
         
         displayMessageOrError();
     ?>
+    <label for="settingsChangeEmail">Change Email [-not implemented-]</label>
+    <form method="post" action="logic.php?action=changeUserMail">
+        <input name="settingsChangeEmail" type="email" placeholder="new email" required>
+        <input name="settingsChangeEmailSubmit" type="submit" value="Change">
+    </form>
 </body>
 </html>
