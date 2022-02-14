@@ -56,6 +56,11 @@ Via switch it is possible to **customize** all of the error codes:
  - > **2002**
    > "password incorrect"
 
+**settings codes (error)**
+
+- > **8002**
+   > "could net send mail: already verified"
+
 **message codes**
 
  - > **8001**

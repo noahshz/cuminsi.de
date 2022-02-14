@@ -101,6 +101,9 @@
                 case '8001':
                     echo "Die verify mail wurde erneut gesendet";
                     break;
+                case '8002':
+                    echo "erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert";
+                    break;
                 case '9001':
                     echo "Benutzer erfolgreich erstellt sie können sich nun einloggen.";
                     break;

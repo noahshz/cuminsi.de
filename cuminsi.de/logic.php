@@ -191,7 +191,7 @@
 
             //Step before
             if($session->get('verified') == "true") {
-                header('Location: settings.php');
+                header('Location: settings.php?error_code=8002');
             }
 
             //Step 1
