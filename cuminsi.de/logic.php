@@ -270,8 +270,6 @@
 
             header('Location: settings.php?message=8003');
 
-            //TODO
-
             break;
     }
 ?>
