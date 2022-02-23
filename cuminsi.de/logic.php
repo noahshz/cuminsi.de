@@ -57,12 +57,8 @@
             $hashed_upw = hash(HASH, $_POST['signup_password_2']);
             $email = str_replace(" ", "", $_POST['signup_email']);
             
-            $stmt = $pdo->prepare("INSERT INTO `users` (`username`, `email`, `password`, `verification_code`, `verified`) VALUES (:username, :email, :pw, :verifycode, 'false');");
-            $stmt->bindParam(':username', $_POST['signup_username']);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':pw', $hashed_upw);
-            $stmt->bindParam(':verifycode', $verification_code);
-            $stmt->execute();
+            $user = new User($pdo);
+            $user->create($_POST['signup_username'], $email, $hashed_upw, $verification_code);
 
             //Step 5
             try {
@@ -214,6 +210,7 @@
             break;
         
         case 'changeUserMail':
+            $user = new User($pdo);
             /*
                 new mail: $_POST['settingsChangeEmail']
                 Step 1: check if input email already exists
@@ -247,6 +244,7 @@
 
             $session->set('verified', 'false');
 
+            //$user->edit($session->get('uid'), ['verification_code' => $newVerifyCode]);
             $stmt = $pdo->prepare("UPDATE `users` SET `verification_code` = :newcode WHERE `id` = :userid;");
             $stmt->bindParam(":userid", $session->get('uid'));
             $stmt->bindParam(":newcode", $newVerifyCode);
