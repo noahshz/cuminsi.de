@@ -1,5 +1,7 @@
 <?php
     require 'requirements.php';
+
+    $session = new Session();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,15 +18,17 @@
 <body>
     <div class="header">
         <div class="column left">
-
+            <?php
+                if($session->isset()) {
+                    echo '<a href="createpost.php">Add Post</a>';
+                }
+            ?>
         </div>
         <div class="column center">
             <h1>Cuminsi.de</h1>
         </div>
         <div class="column right">
-            <?php
-                $session = new Session();
-                
+            <?php        
                 if($session->isset()) {
                     echo "Eingeloggt als: " . $session->get('username');
                     //logout is available
@@ -41,6 +45,9 @@
     </div>
     <div class="content">
         <p>Haupt Content</p>
+        <?php
+
+        ?>
     </div>
     <div class="footer">
         <p>Impressum in so</p>

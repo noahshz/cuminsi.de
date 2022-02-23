@@ -269,5 +269,9 @@
             header('Location: settings.php?message=8003');
 
             break;
+
+        case 'createpost':
+            die($_POST['title'] . "---" . $_POST['link']);
+            break;
     }
 ?>
