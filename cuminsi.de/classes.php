@@ -47,12 +47,22 @@
                 switch($item) {
                     case "username":
                         //setzte username neue value where id = uid
+                        //...
+
+
                         break;
                     case "email":
                         //setzte email neue value where id = uid
+                        $stmt = $this->pdo->prepare("UPDATE `users` SET `email` = :val WHERE `id` = :userid;");
+                        $stmt->bindParam(":userid", $uid);
+                        $stmt->bindParam(":val", $value);
+                        $stmt->execute();
                         break;
                     case "password":
                         //password email neue value where id = uid
+                        //...
+
+
                         break;
                     case "verified":
                         //set verified = value
@@ -62,6 +72,7 @@
                         $stmt->execute();
                         break;
                     case "verification_code":
+                        //set new verify code
                         $stmt = $this->pdo->prepare("UPDATE `users` SET `verification_code` = :val WHERE `id` = :userid;");
                         $stmt->bindParam(":userid", $uid);
                         $stmt->bindParam(":val", $value);

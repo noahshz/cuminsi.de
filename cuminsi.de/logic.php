@@ -257,6 +257,7 @@
             }
 
             //Step 2
+            //$user->edit($session->get('uid'), ['email' => $_POST['settingsChangeEmail']]);
             $stmt = $pdo->prepare("UPDATE `users` SET `email` = :newmail WHERE `id` = :userid;");
             $stmt->bindParam(":userid", $session->get('uid'));
             $stmt->bindParam(":newmail", $_POST['settingsChangeEmail']);
