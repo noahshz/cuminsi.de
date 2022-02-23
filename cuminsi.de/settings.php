@@ -27,12 +27,13 @@
         echo "<br>";
 
         if($session->get('verified') == "false") {
-            echo "resend the verification email";
+            echo "resend the verification email\n";
             echo "<a href='logic.php?action=resendverification'>send</a>";
         }
         
         displayMessageOrError();
     ?>
+    <br><br>
     <label for="settingsChangeEmail">Change Email</label>
     <form method="post" action="logic.php?action=changeUserMail">
         <input name="settingsChangeEmail" type="email" placeholder="new email" required>
