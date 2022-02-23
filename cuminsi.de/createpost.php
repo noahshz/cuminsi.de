@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a href="index.php">Zurück</a>
+    <h2>create post</h2>
     <form action="logic.php?action=createpost" method="post">
         <input name="link" type="text" placeholder="link" required>
         <input name="title" type="text" placeholder="title" required>
