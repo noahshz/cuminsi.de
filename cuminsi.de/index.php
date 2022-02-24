@@ -48,7 +48,12 @@
         <?php
             $post = new Post($pdo);
             foreach($post->show(20) as $item){
-                echo '<img width="150" src="' . $item['imgpath'] . '">';
+                if(file_exists($item['imgpath'])) {
+                    echo '<img width="150" src="' . $item['imgpath'] . '">';
+                } else {
+                    echo '<img width="150" src="' . THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg" . '">';
+                }
+
                 echo "<br>";
                 echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
                 echo "<br><br><br>";

@@ -298,19 +298,20 @@
                 $link = $_POST['link'];
             }
 
+            //creates uplaod / file name
             $uploadFolder = THUMBNAIL_UPLOAD_FOLDER;
             $imgtype = substr($_FILES['thumbnail']['type'], 6);
             $filename = "u" . $session->get('uid') . "__" . $title . "__" . date("Ymdmis") . "." . $imgtype;
             $imgpath = $uploadFolder . $filename;
 
+            //inserts into db
             $post->create($session->get('uid'), $title, $link,  $imgpath);
 
+            //uploads file to path
             if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $imgpath)) {
-                echo "Datei ist valide und wurde erfolgreich hochgeladen.\n";
-            } else {
-                echo "Möglicherweise eine Dateiupload-Attacke!\n";
+                //data is valid
             }
-            
+
             header('Location: index.php');
 
             break;
