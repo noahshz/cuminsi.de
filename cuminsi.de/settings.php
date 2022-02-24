@@ -2,10 +2,7 @@
     require 'requirements.php';
     
     $session = new Session();
-    
-    if(!$session->isset()) {
-        header('Location: index.php');
-    }
+    if(!$session->isset()) {header('Location: index.php');}
 ?>
 <!DOCTYPE html>
 <html lang="en">

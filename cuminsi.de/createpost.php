@@ -1,3 +1,10 @@
+<?php
+    require 'requirements.php';
+
+    $session = new Session();
+    if(!$session->isset()){header('Location: index.php');}
+    if($session->get('verified') == "false"){header('Location: index.php');}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +17,14 @@
 <body>
     <a href="index.php">Zurück</a>
     <h2>create post</h2>
-    <form action="logic.php?action=createpost" method="post">
-        <input name="link" type="text" placeholder="link" required>
+    <?php
+        displayMessageOrError();
+    ?>
+    <form action="logic.php?action=createpost" method="post" enctype="multipart/form-data">
         <input name="title" type="text" placeholder="title" required>
+        <input name="link" type="text" placeholder="link" required>
         <input name="createpostSubmit" type="submit" value="create">
+        <input name="thumbnail" type="file">
     </form>
 </body>
 </html>

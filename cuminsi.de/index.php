@@ -46,7 +46,11 @@
     <div class="content">
         <p>Haupt Content</p>
         <?php
-
+            $post = new Post($pdo);
+            foreach($post->show(20) as $item){
+                echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
+                echo "<br>";
+            }   
         ?>
     </div>
     <div class="footer">

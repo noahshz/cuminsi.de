@@ -1,6 +1,6 @@
 <?php
     require 'requirements.php';
-    
+    print_r($_POST);
     switch($_GET['action']) {
         case 'signup':
             /*
@@ -271,7 +271,36 @@
             break;
 
         case 'createpost':
-            die($_POST['title'] . "---" . $_POST['link']);
+            /*
+                Step 1: check if user is logged in
+                Step 2: check if user is verified
+                Step 3: create post in db
+                Step 4: upload img to server 
+
+            */
+            $session = new Session();
+            //$user = new User($pdo);
+            $post = new Post($pdo);
+
+            //Step 1
+            if(!$session->isset()) {header('Location: index.php');}
+
+            //Step 2:
+            if($session->get('verified') == 'false') {header('Location: index.php');}
+                //if(!$user->isVerified($session->get('uid'))) {header('Location: index.php');}
+
+            //Step 3
+            if(!isset($_POST['title']) && !isset($_POST['link'])) {
+                $title = "[empty title]";
+                $link = "cuminsi.de";
+            } else {
+                $title = $_POST['title'];
+                $link = $_POST['link'];
+            }
+            $post->create($session->get('uid'), $title, $link, "img/img/img/img");
+
+            header('Location: index.php');
+
             break;
     }
 ?>
