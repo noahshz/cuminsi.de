@@ -6,4 +6,7 @@
 
     //hashing
     define("HASH", "sha256"); //defines the used hash
+
+    //file uploads
+    define("THUMBNAIL_UPLOAD_FOLDER", "uploads/thumbnails/");
 ?>

@@ -289,7 +289,7 @@
             if($session->get('verified') == 'false') {header('Location: index.php');}
                 //if(!$user->isVerified($session->get('uid'))) {header('Location: index.php');}
 
-            //Step 3
+            //Step 3 + 4
             if(!isset($_POST['title']) && !isset($_POST['link'])) {
                 $title = "[empty title]";
                 $link = "cuminsi.de";
@@ -297,8 +297,20 @@
                 $title = $_POST['title'];
                 $link = $_POST['link'];
             }
-            $post->create($session->get('uid'), $title, $link, "img/img/img/img");
 
+            $uploadFolder = THUMBNAIL_UPLOAD_FOLDER;
+            $imgtype = substr($_FILES['thumbnail']['type'], 6);
+            $filename = "u" . $session->get('uid') . "__" . $title . "__" . date("Ymdmis") . "." . $imgtype;
+            $imgpath = $uploadFolder . $filename;
+
+            $post->create($session->get('uid'), $title, $link,  $imgpath);
+
+            if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $imgpath)) {
+                echo "Datei ist valide und wurde erfolgreich hochgeladen.\n";
+            } else {
+                echo "Möglicherweise eine Dateiupload-Attacke!\n";
+            }
+            
             header('Location: index.php');
 
             break;

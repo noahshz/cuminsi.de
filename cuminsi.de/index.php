@@ -48,8 +48,10 @@
         <?php
             $post = new Post($pdo);
             foreach($post->show(20) as $item){
-                echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
+                echo '<img width="150" src="' . $item['imgpath'] . '">';
                 echo "<br>";
+                echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
+                echo "<br><br><br>";
             }   
         ?>
     </div>
