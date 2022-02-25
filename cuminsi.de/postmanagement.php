@@ -36,6 +36,8 @@
             echo "<br>";
             echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
             echo "<br>";
+            echo '<a href="editpost.php?postid=' . $item['id'] . '">Bearbeiten</a>';
+            echo "<br>";
             echo '<a href="logic.php?action=deletepost&postid=' . $item['id'] . '">Löschen</a>';
             echo "<br><br><br>";
         }

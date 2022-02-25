@@ -343,5 +343,11 @@
 
             header('Location: postmanagement.php?message=7050');
             break;
+        
+        case 'editpost':
+            print_r($_POST);
+            die();
+
+            break;
     }
 ?>

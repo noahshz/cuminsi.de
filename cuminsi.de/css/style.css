@@ -9,7 +9,9 @@ html, body {
     margin: 0px;
     background: rgb(27, 27, 27);
 }
-
+input {
+    color: black;
+}
 /* Header */
 .header {
     display: flex;
