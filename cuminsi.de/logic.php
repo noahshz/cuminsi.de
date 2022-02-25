@@ -360,12 +360,13 @@
 
             $post->edit($session->get('uid'), $_POST['postid'], ['title' => $_POST['title'], 'link' => $_POST['link']]);
 
-            $uploadFolder = THUMBNAIL_UPLOAD_FOLDER;
-            $imgtype = substr($_FILES['thumbnail']['type'], 6);
-            $filename = "u" . $session->get('uid') . "__" . $title . "__" . date("Ymdmis") . "." . $imgtype;
-            $imgpath = $uploadFolder . $filename;
+            $imgpath = $_POST['oldimgpath'];
 
-            header('Location: postmanagement.php');
+            if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $imgpath)) {
+                //data is valid
+            }
+
+            header('Location: postmanagement.php?message=7051');
 
             break;
     }

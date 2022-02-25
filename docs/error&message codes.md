@@ -82,6 +82,9 @@ Via switch it is possible to **customize** all of the error codes:
  - > **7050**
    > "deleted post successfully"
 
+- > **7051**
+   > "post successfuly edited"
+
  - > **8001**
    > "verification email resend"
 

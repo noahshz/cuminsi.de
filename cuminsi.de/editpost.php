@@ -32,7 +32,7 @@
         <input name="title" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['title'];?> required>
         <input name="link" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['link'];?> required>
         <input name="thumbnail" type="file">
-        <input type="hidden" name="old_path" value=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
+        <input type="hidden" name="oldimgpath" value=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
         <input name="editpostSubmit" type="submit" value="edit">
     </form>
 </body>

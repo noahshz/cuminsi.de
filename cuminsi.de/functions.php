@@ -118,6 +118,9 @@
                 case '7050':
                     echo "Post wurde gelöscht";
                     break;
+                case '7051':
+                    echo "Post wurde bearbeitet";
+                    break;
                 //Message Code from/&to settings
                 case '8001':
                     echo "Die verify mail wurde erneut gesendet";
