@@ -73,42 +73,43 @@
     /*
         Function for display error / message codes
     */
-    function displayMessageOrError() {
+    function displayMessageOrError() :void 
+    {
         if(isset($_GET['error_code'])) {
             switch($_GET['error_code']) {
                 //Error Codes from signup
                 case '1001':
-                    echo "Der Benutzername ist bereits vorhanden. Bitte wählen sie einen anderen Benutzernamen aus.";
+                    printMsg("Der Benutzername ist bereits vorhanden. Bitte wählen sie einen anderen Benutzernamen aus.");
                     break;
                 case '1002':
-                    echo "Die Email adresse wird bereits verwendet.";
+                    printMsg("Die Email adresse wird bereits verwendet.");
                     break;
                 case '1003':
-                    echo "Die eingegebenen Passwörter stimmen nicht überein.";
+                    printMsg("Die eingegebenen Passwörter stimmen nicht überein.");
                     break;
                 //Error-Codes from Login
                 case '2001':
-                    echo "Der Benutzer existiert nciht";
+                    printMsg("Der Benutzer existiert nciht");
                     break;
                 case '2002':
-                    echo "Password falsch";
+                    printMsg("Password falsch");
                     break;
                 //Error-Codes from postmanagement
                 case '7001':
-                    echo 'could not delete post - none post selected';
+                    printMsg('could not delete post - none post selected');
                     break;
                 case '7002':
-                    echo 'not allowed to delete post - your not the creator of this post';
+                    printMsg('not allowed to delete post - your not the creator of this post');
                     break;
                 //Error codes from/to settings
                 case '8002':
-                    echo "erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert";
+                    printMsg("erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert");
                     break;
                 case '9050':
-                    echo "bitte melden sie sich an, um diese funktion nutzen zu können";
+                    printMsg("bitte melden sie sich an, um diese funktion nutzen zu können");
                     break;
                 case '9051':
-                    echo "sie müssen verifiziert sein, um diese funktion nutzen zu können";
+                    printMsg("sie müssen verifiziert sein, um diese funktion nutzen zu können");
                     break;
             }
         }
@@ -116,31 +117,37 @@
             switch($_GET['message']) {
                 //Message code für post management
                 case '7050':
-                    echo "Post wurde gelöscht";
+                    printMsg("Post wurde gelöscht");
                     break;
                 case '7051':
-                    echo "Post wurde bearbeitet";
+                    printMsg("Post wurde bearbeitet");
                     break;
                 //Message Code from/&to settings
                 case '8001':
-                    echo "Die verify mail wurde erneut gesendet";
+                    printMsg("Die verify mail wurde erneut gesendet");
                     break;
                 case '8003':
-                    echo "email wurde geändrt";
+                    printMsg("email wurde geändrt");
                     break;
                 //Message code from signup to login
                 case '9001':
-                    echo "Benutzer erfolgreich erstellt sie können sich nun einloggen.";
+                    printMsg("Benutzer erfolgreich erstellt sie können sich nun einloggen.");
                     break;
                 //Message code from logout to login
                 case '9002':
-                    echo "Sie haben sich erfolgreich ausgeloggt. Sie können sich nun wieder einloggen.";
+                    printMsg("Sie haben sich erfolgreich ausgeloggt. Sie können sich nun wieder einloggen.");
                     break;
                 //Message code from verify to login
                 case '9003':
-                    echo "erfolgreich verifiviert, bitte melden sie sich erneut an";
+                    printMsg("erfolgreich verifiviert, bitte melden sie sich erneut an");
                     break;
             }
         }
+    }
+    function printMsg(string $msg) : void
+    {
+        echo "<hr>";    
+        echo $msg;
+        echo "<hr>";
     }
 ?>

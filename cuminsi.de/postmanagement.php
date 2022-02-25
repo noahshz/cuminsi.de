@@ -16,7 +16,7 @@
 </head>
 <body>
     <a href="index.php">Zurück</a>
-    <h2>Post Management</h2>
+    <h2>Meine Posts</h2>
 
     <a href="createpost.php">Create Post</a>
     <?php
