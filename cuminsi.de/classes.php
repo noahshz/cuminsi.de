@@ -140,13 +140,26 @@
             $stmt->bindParam(":imgpath", $imgpath);
             $stmt->execute();
         }
-        function edit() 
+        function edit($uid, $postid, $options) 
         {
-            
-        }
-        function delete() 
-        {
-
+            foreach($options as $item => $value) {
+                switch($item) {
+                    case "title":
+                        $stmt = $this->pdo->prepare('UPDATE `posts` SET `title` = :title WHERE `id` = :postid AND `uid` = :userid;');
+                        $stmt->bindParam(':title', $value, PDO::PARAM_STR);
+                        $stmt->bindParam(':postid', $postid, PDO::PARAM_INT);
+                        $stmt->bindParam(':userid', $uid, PDO::PARAM_INT);
+                        $stmt->execute();
+                        break;
+                    case "link":
+                        $stmt = $this->pdo->prepare('UPDATE `posts` SET `link` = :link WHERE `id` = :postid AND `uid` = :userid;');
+                        $stmt->bindParam(':link', $value, PDO::PARAM_STR);
+                        $stmt->bindParam(':postid', $postid, PDO::PARAM_INT);
+                        $stmt->bindParam(':userid', $uid, PDO::PARAM_INT);
+                        $stmt->execute();
+                        break;
+                }
+            }
         }
     }
 ?>

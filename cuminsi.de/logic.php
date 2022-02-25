@@ -345,8 +345,27 @@
             break;
         
         case 'editpost':
-            print_r($_POST);
-            die();
+            $session = new Session();
+            $post = new Post($pdo);
+            
+            if(!$session->isset()) {header('Location: index.php?error_code=9050');}
+            if($session->get('verified') == 'false') {header('Location: index.php?error_code=9051');}
+
+            if(!isset($_POST['postid'])) {header('Location: postmanagement.php?error_code=7001');}
+
+            if($session->get('uid') != $post->getInfos($_POST['postid'])[0]['uid']) {
+                //der angemeldete user stimmt nicht mit dem ersteller überein
+                header('Location: postmanagement.php?error_code=7002');
+            }
+
+            $post->edit($session->get('uid'), $_POST['postid'], ['title' => $_POST['title'], 'link' => $_POST['link']]);
+
+            $uploadFolder = THUMBNAIL_UPLOAD_FOLDER;
+            $imgtype = substr($_FILES['thumbnail']['type'], 6);
+            $filename = "u" . $session->get('uid') . "__" . $title . "__" . date("Ymdmis") . "." . $imgtype;
+            $imgpath = $uploadFolder . $filename;
+
+            header('Location: postmanagement.php');
 
             break;
     }

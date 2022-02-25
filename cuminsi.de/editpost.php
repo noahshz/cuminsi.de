@@ -26,10 +26,13 @@
 <body>
     <a href="postmanagement.php">Zurück</a>
     <h2>Edit Post</h2>
+    <img src=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
     <form method="post" action="logic.php?action=editpost" enctype="multipart/form-data">
+        <input type="hidden" name="postid" value=<?php echo $post->getInfos($_GET['postid'])[0]['id'];?>>
         <input name="title" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['title'];?> required>
         <input name="link" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['link'];?> required>
-        <input name="thumbnail" type="file" required>
+        <input name="thumbnail" type="file">
+        <input type="hidden" name="old_path" value=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
         <input name="editpostSubmit" type="submit" value="edit">
     </form>
 </body>
