@@ -348,9 +348,11 @@
             $session = new Session();
             $post = new Post($pdo);
             
+            //check if session is active
             if(!$session->isset()) {header('Location: index.php?error_code=9050');}
+            //check if user is verified
             if($session->get('verified') == 'false') {header('Location: index.php?error_code=9051');}
-
+            //check if postid is set
             if(!isset($_POST['postid'])) {header('Location: postmanagement.php?error_code=7001');}
 
             if($session->get('uid') != $post->getInfos($_POST['postid'])[0]['uid']) {
@@ -361,10 +363,7 @@
             $post->edit($session->get('uid'), $_POST['postid'], ['title' => $_POST['title'], 'link' => $_POST['link']]);
 
             $imgpath = $_POST['oldimgpath'];
-
-            if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $imgpath)) {
-                //data is valid
-            }
+            if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $imgpath)) {/*data is valid*/}
 
             header('Location: postmanagement.php?message=7051');
 
