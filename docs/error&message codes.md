@@ -38,7 +38,7 @@ Via switch it is possible to **customize** all of the error codes:
   <hr>
 
 ### Code list
-	
+
 **signup codes (error)**
 
  - > **1001**
@@ -60,6 +60,14 @@ Via switch it is possible to **customize** all of the error codes:
 
 - > **8002**
    > "could net send mail: already verified"
+
+**user activity codes (error)**
+
+- > **9050**
+   > "please login to use this function"
+
+- > **9051**
+   > "you need to ber verified to use this function"
 
 **post-management codes (error)**
 

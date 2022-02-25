@@ -104,6 +104,12 @@
                 case '8002':
                     echo "erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert";
                     break;
+                case '9050':
+                    echo "bitte melden sie sich an, um diese funktion nutzen zu können";
+                    break;
+                case '9051':
+                    echo "sie müssen verifiziert sein, um diese funktion nutzen zu können";
+                    break;
             }
         }
         if(isset($_GET['message'])) {

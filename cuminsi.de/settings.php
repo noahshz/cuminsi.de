@@ -2,7 +2,7 @@
     require 'requirements.php';
     
     $session = new Session();
-    if(!$session->isset()) {header('Location: index.php');}
+    if(!$session->isset()) {header('Location: index.php?error_code=9050');}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -2,8 +2,8 @@
     require 'requirements.php';
 
     $session = new Session();
-    if(!$session->isset()){header('Location: index.php');}
-    if($session->get('verified') == "false"){header('Location: index.php');}
+    if(!$session->isset()){header('Location: index.php?error_code=9050');}
+    if($session->get('verified') == "false"){header('Location: index.php?error_code=9051');}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -184,7 +184,7 @@
                 Step 2: send mail with new key
             */
             $session = new Session();
-            if(!$session->isset()) {header('Location: index.php');}
+            if(!$session->isset()) {header('Location: index.php?error_code=9050');}
 
             //Step before
             if($session->get('verified') == "true") {
@@ -214,7 +214,7 @@
             $user = new User($pdo);
             $session = new Session();
 
-            if(!$session->isset()) {header('Location: index.php');}
+            if(!$session->isset()) {header('Location: index.php?error_code=9050');}
             /*
                 new mail: $_POST['settingsChangeEmail']
                 Step 1: check if input email already exists
@@ -287,10 +287,10 @@
             $post = new Post($pdo);
 
             //Step 1
-            if(!$session->isset()) {header('Location: index.php');}
+            if(!$session->isset()) {header('Location: index.php?error_code=9050');}
 
             //Step 2:
-            if($session->get('verified') == 'false') {header('Location: index.php');}
+            if($session->get('verified') == 'false') {header('Location: index.php?error_code=9051');}
                 //if(!$user->isVerified($session->get('uid'))) {header('Location: index.php');}
 
             //Step 3 + 4
@@ -324,8 +324,8 @@
             $session = new Session();
             $post = new Post($pdo);
             
-            if(!$session->isset()) {header('Location: index.php');}
-            if($session->get('verified') == 'false') {header('Location: index.php');}
+            if(!$session->isset()) {header('Location: index.php?error_code=9050');}
+            if($session->get('verified') == 'false') {header('Location: index.php?error_code=9051');}
 
             if(!isset($_GET['postid'])) {header('Location: postmanagement.php?error_code=7001');}
 
