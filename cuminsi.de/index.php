@@ -21,6 +21,8 @@
             <?php
                 if($session->isset()) {
                     echo '<a href="createpost.php">Add Post</a>';
+                    echo "<br>";
+                    echo '<a href="postmanagement.php">Post management</a>';
                 }
             ?>
         </div>
@@ -47,7 +49,7 @@
         <p>Haupt Content</p>
         <?php
             $post = new Post($pdo);
-            foreach($post->show(20) as $item){
+            foreach($post->getAll(20) as $item){
                 if(file_exists($item['imgpath'])) {
                     echo '<img width="150" src="' . $item['imgpath'] . '">';
                 } else {

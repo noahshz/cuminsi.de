@@ -9,3 +9,5 @@ work in progress
 - create class post as model (all functions like: createPost, editPost, LikePost)
 - create forgot/reset password function
 - create post managemant (crud)
+
+- error messages: as link with redirection to index.php or login.php etc withozut error code

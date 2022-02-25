@@ -93,6 +93,10 @@
                 case '2002':
                     echo "Password falsch";
                     break;
+                //Error-Codes from postmanagement
+                case '7001':
+                    echo 'could not delete post - none post selected';
+                    break;
                 //Error codes from/to settings
                 case '8002':
                     echo "erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert";

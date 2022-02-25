@@ -61,6 +61,11 @@ Via switch it is possible to **customize** all of the error codes:
 - > **8002**
    > "could net send mail: already verified"
 
+**post-management codes (error)**
+
+- > **7001**
+   > "could not delete post -> no post is selected"
+
 **message codes**
 
  - > **8001**

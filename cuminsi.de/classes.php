@@ -100,10 +100,18 @@
         {
             $this->pdo = $dbconnection;
         }
-        function show(int $limit): array
+        function getAll(int $limit): array
         {
             $stmt = $this->pdo->prepare("SELECT * FROM `posts` ORDER BY `id` ASC limit :lim;");
             $stmt->bindParam(":lim", $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+        function getUserPosts($uid): array
+        {
+            $stmt = $this->pdo->prepare("SELECT * FROM `posts` WHERE `uid` = :userid;");
+            $stmt->bindParam(":userid", $uid, PDO::PARAM_INT);
             $stmt->execute();
 
             return $stmt->fetchAll();

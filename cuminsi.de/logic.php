@@ -184,6 +184,7 @@
                 Step 2: send mail with new key
             */
             $session = new Session();
+            if(!$session->isset()) {header('Location: index.php');}
 
             //Step before
             if($session->get('verified') == "true") {
@@ -211,6 +212,9 @@
         
         case 'changeUserMail':
             $user = new User($pdo);
+            $session = new Session();
+
+            if(!$session->isset()) {header('Location: index.php');}
             /*
                 new mail: $_POST['settingsChangeEmail']
                 Step 1: check if input email already exists
@@ -314,6 +318,24 @@
 
             header('Location: index.php');
 
+            break;
+
+        case 'deletepost':
+            $session = new Session();
+            $post = new Post($pdo);
+            
+            if(!$session->isset()) {header('Location: index.php');}
+            if($session->get('verified') == 'false') {header('Location: index.php');}
+
+            if(!isset($_GET['postid'])) {header('Location: postmanagement.php?error_code=7001');}
+
+            /*
+                checke, ob die aktive session id mit der uid vom post übereinstimmt
+
+
+            */
+
+            die($_GET['postid']);
             break;
     }
 ?>
