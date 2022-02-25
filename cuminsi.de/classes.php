@@ -43,6 +43,14 @@
             }
             return false;
         }
+        function getInfos($uid): array
+        {
+            $stmt = $this->pdo->prepare("SELECT * FROM `users` WHERE `id` = :userid;");
+            $stmt->bindParam(':userid', $uid);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
         function create($username, $email, $password, $verificationcode): void
         {
             $stmt = $this->pdo->prepare("INSERT INTO `users` (`username`, `email`, `password`, `verification_code`, `verified`) VALUES (:username, :email, :pw, :verifycode, 'false');");
@@ -114,6 +122,13 @@
             $stmt->bindParam(":userid", $uid, PDO::PARAM_INT);
             $stmt->execute();
 
+            return $stmt->fetchAll();
+        }
+        function getInfos($postid):array 
+        {
+            $stmt = $this->pdo->prepare("SELECT * FROM `posts` WHERE `id` = :postid;");
+            $stmt->bindParam(":postid", $postid, PDO::PARAM_INT);
+            $stmt->execute();
             return $stmt->fetchAll();
         }
         function create( $uid, $title, $link, $imgpath): void

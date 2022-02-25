@@ -97,6 +97,9 @@
                 case '7001':
                     echo 'could not delete post - none post selected';
                     break;
+                case '7002':
+                    echo 'not allowed to delete post - your not the creator of this post';
+                    break;
                 //Error codes from/to settings
                 case '8002':
                     echo "erneute mail konnte nicht geschcikt werden: sie sind bereits verifiziert";
@@ -105,6 +108,10 @@
         }
         if(isset($_GET['message'])) {
             switch($_GET['message']) {
+                //Message code für post management
+                case '7050':
+                    echo "Post wurde gelöscht";
+                    break;
                 //Message Code from/&to settings
                 case '8001':
                     echo "Die verify mail wurde erneut gesendet";

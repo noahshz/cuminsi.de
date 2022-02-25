@@ -66,7 +66,13 @@ Via switch it is possible to **customize** all of the error codes:
 - > **7001**
    > "could not delete post -> no post is selected"
 
+- > **7002**
+   > "not allowed to delete post - your not the creator of this post"
+
 **message codes**
+
+ - > **7050**
+   > "deleted post successfully"
 
  - > **8001**
    > "verification email resend"
