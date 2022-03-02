@@ -16,30 +16,28 @@
 </head>
 <body>
     <a href="index.php">Zurück</a>
-    <h2>Meine Posts</h2>
 
-    <a href="createpost.php">Create Post</a>
     <?php
-        echo "<hr>";
-        displayMessageOrError();
-        echo "<hr>";
-
-        $post = new Post($pdo);
-    
-        foreach($post->getUserPosts($session->get('uid')) as $item) {
-            if(file_exists($item['imgpath'])) {
-                echo '<img width="150" src="' . $item['imgpath'] . '">';
-            } else {
-                echo '<img width="150" src="' . THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg" . '">';
+        if(isset($_GET['tab'])) {
+            switch($_GET['tab']) {
+                case 'uploaded':
+                    //show tab with own uploaded posts
+                    include 'template_uploadedPosts.php';
+                    break;
+                case 'liked':
+                    //show tab with liked posts
+                    include 'template_likedPosts.php';
+                    break;
+                case 'create':
+                    //show tab to create post
+                    break;
+                default:
+                    //default case: show uploaded posts
+                    include 'template_uploadedPosts.php';
+                    break;
             }
-
-            echo "<br>";
-            echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
-            echo "<br>";
-            echo '<a href="editpost.php?postid=' . $item['id'] . '">Bearbeiten</a>';
-            echo "<br>";
-            echo '<a href="logic.php?action=deletepost&postid=' . $item['id'] . '">Löschen</a>';
-            echo "<br><br><br>";
+        } else {
+            include 'template_uploadedPosts.php';
         }
     ?>
 </body>
