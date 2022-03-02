@@ -57,7 +57,7 @@
                 }
 
                 echo "<br>";
-                echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
+                echo '<a href="' . $item['link'] . '" URL target="blank">' . $item['title'] . '</a>';
                 echo "<br><br><br>";
             }   
         ?>

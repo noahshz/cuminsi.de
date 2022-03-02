@@ -340,10 +340,13 @@
             //delete img
             //...
 
-            if(unlink($post->getInfos($_GET['postid'])[0]['imgpath'])) {
-                //img deleted successfully
+            if(!str_contains($post->getInfos($_GET['postid'])[0]['imgpath'], "thumbnail_placeholder.jpg")) {
+                if(unlink($post->getInfos($_GET['postid'])[0]['imgpath'])) {
+                    //img deleted successfully
+                } else {
+                    //not deleted
+                }
             }
-
 
             $stmt = $pdo->prepare('DELETE FROM `posts` WHERE id = :postid AND `uid` = :userid;');
             $stmt->bindParam(":postid", $_GET['postid'], PDO::PARAM_INT);
