@@ -20,7 +20,7 @@
         <div class="column left">
             <?php
                 if($session->isset()) {
-                    echo '<a href="createpost.php">Add Post</a>';
+                    echo '<a href="postmanagement.php?tab=create">Add Post</a>';
                     echo "<br>";
                     echo '<a href="postmanagement.php">Meine Posts</a>';
                 }

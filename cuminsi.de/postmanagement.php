@@ -17,6 +17,12 @@
 <body>
     <a href="index.php">Zurück</a>
 
+    <hr>
+    <a href="postmanagement.php?tab=uploaded">Uploaded Posts</a>
+    <a href="postmanagement.php?tab=liked">Liked Posts</a>
+    <a href="postmanagement.php?tab=create">Create Post</a>
+    <hr>
+
     <?php
         if(isset($_GET['tab'])) {
             switch($_GET['tab']) {
@@ -30,6 +36,7 @@
                     break;
                 case 'create':
                     //show tab to create post
+                    include 'template_createPost.php';
                     break;
                 default:
                     //default case: show uploaded posts

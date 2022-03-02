@@ -316,7 +316,7 @@
                 //data is valid
             }
 
-            header('Location: index.php');
+            header('Location: postmanagement.php?tab=uploaded');
 
             break;
 
@@ -341,7 +341,7 @@
             $stmt->bindParam(":userid", $session->get('uid'), PDO::PARAM_INT);
             $stmt->execute();
 
-            header('Location: postmanagement.php?message=7050');
+            header('Location: postmanagement.php?tab=uploaded&message=7050');
             break;
         
         case 'editpost':
@@ -365,7 +365,7 @@
             $imgpath = $_POST['oldimgpath'];
             if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $imgpath)) {/*data is valid*/}
 
-            header('Location: postmanagement.php?message=7051');
+            header('Location: postmanagement.php?tab=uploaded&message=7051');
 
             break;
     }
