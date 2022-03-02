@@ -336,6 +336,15 @@
                 //der angemeldete user stimmt nicht mit dem ersteller überein
                 header('Location: postmanagement.php?error_code=7002');
             }
+
+            //delete img
+            //...
+
+            if(unlink($post->getInfos($_GET['postid'])[0]['imgpath'])) {
+                //img deleted successfully
+            }
+
+
             $stmt = $pdo->prepare('DELETE FROM `posts` WHERE id = :postid AND `uid` = :userid;');
             $stmt->bindParam(":postid", $_GET['postid'], PDO::PARAM_INT);
             $stmt->bindParam(":userid", $session->get('uid'), PDO::PARAM_INT);
