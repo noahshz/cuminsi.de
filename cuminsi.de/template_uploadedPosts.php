@@ -1,8 +1,6 @@
 <h2>Meine Posts</h2>
 <?php
-    echo "<hr>";
-    displayMessageOrError();
-    echo "<hr>";
+    //displayMessageOrError();
 
     $post = new Post($pdo);
 
