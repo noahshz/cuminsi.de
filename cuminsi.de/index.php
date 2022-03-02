@@ -22,7 +22,7 @@
                 if($session->isset()) {
                     echo '<a href="postmanagement.php?tab=create">Add Post</a>';
                     echo "<br>";
-                    echo '<a href="postmanagement.php">Meine Posts</a>';
+                    echo '<a href="postmanagement.php">Posts</a>';
                 }
             ?>
         </div>
