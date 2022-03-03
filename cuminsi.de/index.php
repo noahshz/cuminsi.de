@@ -49,6 +49,8 @@
         <p>Haupt Content</p>
         <?php
             $post = new Post($pdo);
+            $currentpage = basename(__FILE__, '.php'); 
+            
             foreach($post->getAll(20) as $item){
                 if(file_exists($item['imgpath'])) {
                     echo '<img width="150" src="' . $item['imgpath'] . '">';
@@ -62,6 +64,7 @@
                 //if post is not liked -> display like else display unlike
                 echo '<form action="logic.php?action=ratepost" method="post">';
                 echo '<input name="postid" type="hidden" value=' . $item['id'] . '>';
+                echo '<input name="currentpage" type="hidden" value=' . $currentpage . '>';
                 if($post->isLikedByUser($item['id'], $session->get('uid'))) {
                     echo '<input name="unlike" type="submit" value="unlike">';
                 } else {

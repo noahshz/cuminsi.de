@@ -401,7 +401,17 @@
                 $post->like($_POST['postid'], $session->get('uid'));
             }
 
-            header('Location: index.php');
+            switch($_POST['currentpage']) {
+                case 'index':
+                    header('Location: index.php');
+                    break;
+                case 'postmanagement':
+                    header('Location: postmanagement.php?tab=liked');
+                    break;
+                default:
+                    header('Location: index.php');
+                    break;
+            }
 
             break;
     }

@@ -124,6 +124,20 @@
 
             return $stmt->fetchAll();
         }
+        function getLikedPosts($uid): array
+        {
+            $stmt = $this->pdo->prepare('
+                SELECT posts.*
+                FROM posts 
+                JOIN users_posts_liked as liked
+                ON liked.postid = posts.id
+                WHERE liked.uid = :userid;
+            ');
+            $stmt->bindParam(":userid", $uid, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
         function getInfos($postid):array 
         {
             $stmt = $this->pdo->prepare("SELECT * FROM `posts` WHERE `id` = :postid;");

@@ -24,6 +24,7 @@
 
     <?php
         displayMessageOrError();
+        $currentpage = basename(__FILE__, '.php'); 
 
         if(isset($_GET['tab'])) {
             switch($_GET['tab']) {
