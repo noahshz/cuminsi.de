@@ -1,11 +1,11 @@
+<?php
+    require 'requirements.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require 'head.html'; ?>
     <title>SignUp</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <a href="index.php">Zurück</a>
@@ -17,8 +17,6 @@
         <input name="signup_submit" type="submit" value="Sign up">
     </form>
     <?php
-        require 'requirements.php';
-
         displayMessageOrError();
     ?>
 </body>
