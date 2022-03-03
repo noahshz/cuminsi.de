@@ -24,6 +24,17 @@
     --gray-900: #212529;
 }
 * {
+    /* Font-Family */
     font-family: 'Inter', sans-serif;
     font-weight: 300;
+    color: white;
+}
+html, body {
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+body {
+    background: rgb(27, 27, 27);
 }
