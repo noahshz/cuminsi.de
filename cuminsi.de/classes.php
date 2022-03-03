@@ -161,5 +161,31 @@
                 }
             }
         }
+        function isLikedByUser($postid, $uid) : bool
+        {
+            $stmt = $this->pdo->prepare('SELECT COUNT(`id`) FROM users_posts_liked WHERE `uid` = :userid AND `postid` = :postid;');
+            $stmt->bindParam(':postid', $postid, PDO::PARAM_INT);
+            $stmt->bindParam(':userid', $uid, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            if($stmt->fetchAll()[0][0] != 0) {
+                return true;
+            }
+            return false;
+        }
+        function like($postid, $uid) : void
+        {
+            $stmt = $this->pdo->prepare('INSERT INTO users_posts_liked (`uid`, `postid`) VALUES (:userid, :postid);');
+            $stmt->bindParam(":postid", $postid, PDO::PARAM_INT);
+            $stmt->bindParam(":userid", $uid, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+        function unlike($postid, $uid) : void
+        {
+            $stmt = $this->pdo->prepare('DELETE FROM users_posts_liked WHERE `uid` = :userid AND `postid` = :postid;');
+            $stmt->bindParam(":postid", $postid, PDO::PARAM_INT);
+            $stmt->bindParam(":userid", $uid, PDO::PARAM_INT);
+            $stmt->execute();
+        }
     }
 ?>

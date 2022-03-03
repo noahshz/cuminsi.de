@@ -380,5 +380,29 @@
             header('Location: postmanagement.php?tab=uploaded&message=7051');
 
             break;
+
+        case 'ratepost':
+            $session = new Session();
+            $post = new Post($pdo);
+            
+            if(!$session->isset()) {header('Location: index.php?error_code=9050');}
+            /*
+                Check if user has already liked this post
+                if: 
+                    unlike post
+                else:
+                    like post
+            */
+            if($post->isLikedByUser($_POST['postid'], $session->get('uid'))) {
+                //unlike
+                $post->unlike($_POST['postid'], $session->get('uid'));
+            } else {
+                //like
+                $post->like($_POST['postid'], $session->get('uid'));
+            }
+
+            header('Location: index.php');
+
+            break;
     }
 ?>

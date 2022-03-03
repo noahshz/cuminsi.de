@@ -58,6 +58,17 @@
 
                 echo "<br>";
                 echo '<a href="' . $item['link'] . '" URL target="blank">' . $item['title'] . '</a>';
+                echo "<br>";
+                //if post is not liked -> display like else display unlike
+                echo '<form action="logic.php?action=ratepost" method="post">';
+                echo '<input name="postid" type="hidden" value=' . $item['id'] . '>';
+                if($post->isLikedByUser($item['id'], $session->get('uid'))) {
+                    echo '<input name="unlike" type="submit" value="unlike">';
+                } else {
+                    echo '<input name="like" type="submit" value="like">';
+                }
+                echo '</form>';
+
                 echo "<br><br><br>";
             }   
         ?>
