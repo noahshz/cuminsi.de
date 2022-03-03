@@ -7,5 +7,5 @@ work in progress
 - on every submit: change constants.php
 
 - create forgot/reset/change password function
-- create report post function
+- create report post function (id, description, postid, user) + create dashboard for admin to view reported posts
 - error messages: as link with redirection to index.php or login.php etc withozut error code
