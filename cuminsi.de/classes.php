@@ -108,10 +108,14 @@
         {
             $this->pdo = $dbconnection;
         }
-        function getAll(int $limit): array
+        function getAll(int $limit = 0): array
         {
-            $stmt = $this->pdo->prepare("SELECT * FROM `posts` ORDER BY `id` ASC limit :lim;");
-            $stmt->bindParam(":lim", $limit, PDO::PARAM_INT);
+            if($limit == 0) {
+                $stmt = $this->pdo->prepare("SELECT * FROM `posts` ORDER BY `id` ASC;");
+            } else {
+                $stmt = $this->pdo->prepare("SELECT * FROM `posts` ORDER BY `id` ASC limit :lim;");
+                $stmt->bindParam(":lim", $limit, PDO::PARAM_INT);
+            }
             $stmt->execute();
 
             return $stmt->fetchAll();

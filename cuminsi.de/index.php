@@ -48,7 +48,7 @@
                 $post = new Post($pdo);
                 $currentpage = basename(__FILE__, '.php'); 
                 
-                foreach($post->getAll(20) as $item){
+                foreach($post->getAll() as $item){
                     if(file_exists($item['imgpath'])) {
                         echo '<img width="150" src="' . $item['imgpath'] . '">';
                     } else {
