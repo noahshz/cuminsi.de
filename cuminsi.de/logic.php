@@ -1,6 +1,6 @@
 <?php
     require 'requirements.php';
-    print_r($_POST);
+
     switch($_GET['action']) {
         case 'signup':
             /*

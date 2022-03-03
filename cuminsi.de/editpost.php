@@ -16,24 +16,27 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Post</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <a href="postmanagement.php">Zurück</a>
-    <h2>Edit Post</h2>
-    <img src=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
-    <form method="post" action="logic.php?action=editpost" enctype="multipart/form-data">
-        <input type="hidden" name="postid" value=<?php echo $post->getInfos($_GET['postid'])[0]['id'];?>>
-        <input name="title" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['title'];?> required>
-        <input name="link" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['link'];?> required>
-        <input name="thumbnail" type="file">
-        <input type="hidden" name="oldimgpath" value=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
-        <input name="editpostSubmit" type="submit" value="edit">
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <title>Cuminsi.de</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <a href="postmanagement.php">Zurück</a>
+        <h2>Edit Post</h2>
+        <img src=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
+        <form method="post" action="logic.php?action=editpost" enctype="multipart/form-data">
+            <input type="hidden" name="postid" value=<?php echo $post->getInfos($_GET['postid'])[0]['id'];?>>
+            <input name="title" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['title'];?> required>
+            <input name="link" type="text" value=<?php echo $post->getInfos($_GET['postid'])[0]['link'];?> required>
+            <input name="thumbnail" type="file">
+            <input type="hidden" name="oldimgpath" value=<?php echo $post->getInfos($_GET['postid'])[0]['imgpath'];?>>
+            <input name="editpostSubmit" type="submit" value="edit">
+        </form>
+    </body>
 </html>
