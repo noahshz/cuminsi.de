@@ -85,7 +85,7 @@
                 //shows the paginator bar
                 $paginator->show(); 
             ?>
-            <p>Impressum in so</p>
+            <p>Impressum und so</p>
         </div>
     </body>
 </html>
