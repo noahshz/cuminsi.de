@@ -227,7 +227,12 @@
         {
             $this->pdo = $dbconnection;
         }
-        public function construct()
+        public function setLimit(int $limit) : void
+        {
+            $this->limit = $limit;
+            $this->build();
+        }
+        private function build()
         {
             $this->total = $this->getTotal();
             $this->pages = ceil($this->total / $this->limit);
@@ -249,11 +254,6 @@
             $this->stmt->bindParam(':limit', $this->limit, PDO::PARAM_INT);
             $this->stmt->bindParam(':offset', $this->offset, PDO::PARAM_INT);
             $this->stmt->execute();
-        }
-        public function setLimit(int $limit) : void
-        {
-            $this->limit = $limit;
-            $this->construct();
         }
         private function getTotal() : int
         {
