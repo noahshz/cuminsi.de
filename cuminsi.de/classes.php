@@ -108,6 +108,10 @@
         {
             $this->pdo = $dbconnection;
         }
+        function getTotal(): int
+        {
+            return $this->pdo->query('SELECT COUNT(*) FROM posts;')->fetchColumn();
+        }
         function getAll(int $limit = 0): array
         {
             if($limit == 0) {
@@ -204,6 +208,76 @@
             $stmt->bindParam(":postid", $postid, PDO::PARAM_INT);
             $stmt->bindParam(":userid", $uid, PDO::PARAM_INT);
             $stmt->execute();
+        }
+    }
+    class Paginator 
+    {
+        private string $total;
+        private int $limit;
+        private $pdo;
+        private int $pages;
+        private int $page;
+        private int $offset;
+        private string $prevlink, $nextlink;
+        private int $start, $end;
+
+        private $stmt;
+
+        function __construct($dbconnection) 
+        {
+            $this->pdo = $dbconnection;
+        }
+        public function construct()
+        {
+            $this->total = $this->getTotal();
+            $this->pages = ceil($this->total / $this->limit);
+            $this->page = min($this->pages, filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT, array(
+                'options' => array(
+                    'default'   => 1,
+                    'min_range' => 1,
+                ),
+            )));
+            $this->offset = ($this->page - 1)  * $this->limit;
+            $this->start = $this->offset + 1;
+            $this->end = min(($this->offset + $this->limit), $this->total);
+            $this->prevlink = ($this->page > 1) ? '<a href="?page=1" title="First page">&laquo;</a> <a href="?page=' . ($this->page - 1) . '" title="Previous page">&lsaquo;</a>' : '<span class="disabled">&laquo;</span> <span class="disabled">&lsaquo;</span>';
+            $this->nextlink = ($this->page < $this->pages) ? '<a href="?page=' . ($this->page + 1) . '" title="Next page">&rsaquo;</a> <a href="?page=' . $this->pages . '" title="Last page">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> <span class="disabled">&raquo;</span>';
+
+            $this->stmt = $this->pdo->prepare('SELECT * FROM posts ORDER BY id DESC LIMIT :limit OFFSET :offset;');
+
+            // Bind the query params
+            $this->stmt->bindParam(':limit', $this->limit, PDO::PARAM_INT);
+            $this->stmt->bindParam(':offset', $this->offset, PDO::PARAM_INT);
+            $this->stmt->execute();
+        }
+        public function setLimit(int $limit) : void
+        {
+            $this->limit = $limit;
+            $this->construct();
+        }
+        private function getTotal() : int
+        {
+            return $this->pdo->query('SELECT COUNT(*) FROM posts;')->fetchColumn();
+        }
+        public function showResults() : void
+        {
+            if ($this->stmt->rowCount() > 0) {
+                // Define how we want to fetch the results
+                $this->stmt->setFetchMode(PDO::FETCH_ASSOC);
+                $iterator = new IteratorIterator($this->stmt);
+    
+                // Display the results
+                foreach ($iterator as $row) {
+                    echo '<p>', $row['title'], '</p>';
+                }
+    
+            } else {
+                echo '<p>No results could be displayed.</p>';
+            }
+        }
+        public function show() : void
+        {
+            echo '<div id="paging"><p>', $this->prevlink, ' Page ', $this->page, ' of ', $this->pages, ' pages, displaying ', $this->start, '-', $this->end, ' of ', $this->total, ' results ', $this->nextlink, ' </p></div>';
         }
     }
 ?>

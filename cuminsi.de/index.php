@@ -76,6 +76,17 @@
                     echo "<br><br><br>";
                 }   
             ?>
+
+            <?php
+                $paginator = new Paginator($pdo);
+                $paginator->setLimit(2);
+
+                //Shows the posts
+                $paginator->showResults();
+
+                //shows the paginator bar
+                $paginator->show();
+            ?>
         </div>
         <div class="footer">
             <p>Impressum in so</p>
