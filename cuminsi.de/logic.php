@@ -414,5 +414,18 @@
             }
 
             break;
+
+        case 'reportpost':
+            if(!isset($_POST['reportedpostId']) || !isset($_POST['description'])) {
+                header('Location: index.php');
+            }
+            $stmt = $pdo->prepare('INSERT INTO adm_reportedposts (`postid`, `description`) VALUES (:postid, :descript);');
+            $stmt->bindParam(":postid", $_POST['reportedpostId'], PDO::PARAM_INT);
+            $stmt->bindParam(":descript",  $_POST['description'], PDO::PARAM_STR);
+            $stmt->execute();
+
+            header('Location: index.php?message=6000');
+        
+            break;
     }
 ?>

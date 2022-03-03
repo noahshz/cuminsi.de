@@ -115,6 +115,9 @@
         }
         if(isset($_GET['message'])) {
             switch($_GET['message']) {
+                case '6000':
+                    printMsg("post wurde gemeldet. danke für die rückmeldung");
+                    break;
                 //Message code für post management
                 case '7050':
                     printMsg("Post wurde gelöscht");

@@ -71,6 +71,10 @@
                     echo '<input name="like" type="submit" value="like">';
                 }
                 echo '</form>';
+                echo '<form action="reportpost.php" method="post">';
+                echo '<input name="postid" type="hidden" value=' . $item['id'] . '>';
+                echo '<input name="report" type="submit" value="report">';
+                echo '</form>';
 
                 echo "<br><br><br>";
             }   

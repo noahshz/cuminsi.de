@@ -79,10 +79,13 @@ Via switch it is possible to **customize** all of the error codes:
 
 **message codes**
 
+ - > **600**
+   > "post reported. thanks for your report"
+
  - > **7050**
    > "deleted post successfully"
 
-- > **7051**
+ - > **7051**
    > "post successfuly edited"
 
  - > **8001**
