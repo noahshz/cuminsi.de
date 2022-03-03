@@ -226,7 +226,7 @@
         function __construct($dbconnection) 
         {
             $this->pdo = $dbconnection;
-            $this->limit = $this->getTotal();
+            $this->setLimit($this->getTotal());
         }
         public function setLimit(int $limit = 0) : void
         {

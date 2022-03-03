@@ -78,12 +78,13 @@
 
                     echo "<br><br><br>";
                 }
-
-                //shows the paginator bar
-                $paginator->show();
             ?>
         </div>
         <div class="footer">
+            <?php 
+                //shows the paginator bar
+                $paginator->show(); 
+            ?>
             <p>Impressum in so</p>
         </div>
     </body>
