@@ -227,9 +227,13 @@
         {
             $this->pdo = $dbconnection;
         }
-        public function setLimit(int $limit) : void
+        public function setLimit(int $limit = 0) : void
         {
-            $this->limit = $limit;
+            if($limit == 0) {
+                $this->limit = $this->getTotal();
+            } else {
+                $this->limit = $limit;
+            }
             $this->build();
         }
         private function build()
@@ -259,21 +263,15 @@
         {
             return $this->pdo->query('SELECT COUNT(*) FROM posts;')->fetchColumn();
         }
-        public function showResults() : void
+        public function getResults() : Iterator
         {
             if ($this->stmt->rowCount() > 0) {
-                // Define how we want to fetch the results
                 $this->stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $iterator = new IteratorIterator($this->stmt);
     
-                // Display the results
-                foreach ($iterator as $row) {
-                    echo '<p>', $row['title'], '</p>';
-                }
-    
-            } else {
-                echo '<p>No results could be displayed.</p>';
+                return $iterator;
             }
+            return null;
         }
         public function show() : void
         {

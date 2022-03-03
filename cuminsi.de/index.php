@@ -81,8 +81,9 @@
                 $paginator = new Paginator($pdo);
                 $paginator->setLimit(2);
 
-                //Shows the posts
-                $paginator->showResults();
+                foreach($paginator->getResults() as $item) {
+                    echo $item['title'] . "<br>";
+                }
 
                 //shows the paginator bar
                 $paginator->show();
