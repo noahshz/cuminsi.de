@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 25. Feb 2022 um 14:10
+-- Erstellungszeit: 03. Mrz 2022 um 10:25
 -- Server-Version: 10.4.21-MariaDB
 -- PHP-Version: 8.0.12
 
@@ -52,6 +52,18 @@ CREATE TABLE `users` (
   `verified` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `users_posts_liked`
+--
+
+CREATE TABLE `users_posts_liked` (
+  `id` int(255) NOT NULL,
+  `uid` int(255) NOT NULL,
+  `postid` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indizes der exportierten Tabellen
 --
@@ -71,6 +83,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `UniqueEmail` (`email`);
 
 --
+-- Indizes für die Tabelle `users_posts_liked`
+--
+ALTER TABLE `users_posts_liked`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT für exportierte Tabellen
 --
 
@@ -85,6 +103,12 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `users`
   MODIFY `id` int(99) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `users_posts_liked`
+--
+ALTER TABLE `users_posts_liked`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
