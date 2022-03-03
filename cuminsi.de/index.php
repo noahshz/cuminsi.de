@@ -48,6 +48,9 @@
     <div class="content">
         <p>Haupt Content</p>
         <?php
+            displayMessageOrError();
+
+
             $post = new Post($pdo);
             $currentpage = basename(__FILE__, '.php'); 
             

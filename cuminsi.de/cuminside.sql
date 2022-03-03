@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 03. Mrz 2022 um 10:25
+-- Erstellungszeit: 03. Mrz 2022 um 11:28
 -- Server-Version: 10.4.21-MariaDB
 -- PHP-Version: 8.0.12
 
@@ -22,6 +22,18 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `cuminside` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `cuminside`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `adm_reportedposts`
+--
+
+CREATE TABLE `adm_reportedposts` (
+  `id` int(255) NOT NULL,
+  `postid` int(255) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -69,6 +81,12 @@ CREATE TABLE `users_posts_liked` (
 --
 
 --
+-- Indizes für die Tabelle `adm_reportedposts`
+--
+ALTER TABLE `adm_reportedposts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indizes für die Tabelle `posts`
 --
 ALTER TABLE `posts`
@@ -91,6 +109,12 @@ ALTER TABLE `users_posts_liked`
 --
 -- AUTO_INCREMENT für exportierte Tabellen
 --
+
+--
+-- AUTO_INCREMENT für Tabelle `adm_reportedposts`
+--
+ALTER TABLE `adm_reportedposts`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `posts`
