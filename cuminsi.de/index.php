@@ -44,11 +44,14 @@
             <?php
                 displayMessageOrError();
 
+                /* Initializes the Paginator */
+                $paginator = new Paginator($pdo);
+                $paginator->setLimit(2);
 
                 $post = new Post($pdo);
                 $currentpage = basename(__FILE__, '.php'); 
                 
-                foreach($post->getAll() as $item){
+                foreach($paginator->getResults() as $item) {
                     if(file_exists($item['imgpath'])) {
                         echo '<img width="150" src="' . $item['imgpath'] . '">';
                     } else {
@@ -74,15 +77,6 @@
                     echo '</form>';
 
                     echo "<br><br><br>";
-                }   
-            ?>
-
-            <?php
-                $paginator = new Paginator($pdo);
-                $paginator->setLimit(2);
-
-                foreach($paginator->getResults() as $item) {
-                    echo $item['title'] . "<br>";
                 }
 
                 //shows the paginator bar
