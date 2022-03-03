@@ -24,8 +24,6 @@
             <input name="login_submit" type="submit" value="Login">
         </form>
         <?php
-            require 'requirements.php';
-
             displayMessageOrError();
         ?>
     </body>
