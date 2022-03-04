@@ -1,0 +1,21 @@
+<div class="post">
+    <div class="top">
+        <div class="thumbnail">
+            <img src="%%THUMBNAIL_PATH%%">  
+        </div>
+        <div class="actions">
+            <form action="logic.php?action=ratepost" method="post">
+                <input name="postid" type="hidden" value="%%POSTID%%">
+                <input name="currentpage" type="hidden" value="%%CURRENTPAGE%%">
+                <input name="like" type="submit" value="like">
+            </form>
+            <form action="reportpost.php" method="post">
+                <input name="postid" type="hidden" value="%%POSTID%%">
+                <input name="report" type="submit" value="report">
+            </form>
+        </div>
+    </div>
+    <div class="bot">
+        <a href="%%LINK%%" url target="blank">%%TITLE%%</a>
+    </div>
+</div>
