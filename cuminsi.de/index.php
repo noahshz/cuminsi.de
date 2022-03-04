@@ -46,7 +46,7 @@
 
                 /* Initializes the Paginator */
                 $paginator = new Paginator($pdo);
-                $paginator->setLimit(2);
+                $paginator->setLimit(15);
 
                 $post = new Post($pdo);
                 $currentpage = basename(__FILE__, '.php'); 
