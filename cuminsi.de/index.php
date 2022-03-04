@@ -41,7 +41,7 @@
         </div>
         <div class="content">
             <div class="posts">
-                <div class="post">
+                <!--div class="post">
                     <div class="top">
                         <div class="thumbnail">
                             <img src="img/post_template-v1.png">  
@@ -58,7 +58,7 @@
                     <div class="bot">
                         <a href="link">Titel</a>
                     </div>
-                </div>
+                </div-->
 
                 <?php
                     displayMessageOrError();
