@@ -96,9 +96,13 @@
                     
                         if(file_exists($item['imgpath'])) {
                             echo '<img width="150" src="' . $item['imgpath'] . '">';
+                            //$post_filled = str_replace("%%THUMBNAIL_PATH%%", $item['imgpath'], $post_filled);
                         } else {
                             echo '<img width="150" src="' . THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg" . '">';
+                            //$post_filled = str_replace("%%THUMBNAIL_PATH%%", THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg", $post_filled);
                         }
+
+                        //$post_filled = $post_template;
 
                         echo "<br>";
                         echo '<a href="' . $item['link'] . '" URL target="blank">' . $item['title'] . '</a>';
