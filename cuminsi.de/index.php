@@ -70,7 +70,7 @@
                     $post = new Post($pdo);
                     $currentpage = basename(__FILE__, '.php'); 
                     
-                    //$post_template = file_get_contents("post.txt");
+                    $post_template = file_get_contents("post.html");
                     /*
                         PLACEHOLDER:
 
