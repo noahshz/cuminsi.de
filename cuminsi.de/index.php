@@ -70,7 +70,6 @@
                     $post = new Post($pdo);
                     $currentpage = basename(__FILE__, '.php'); 
                     
-                    $post_template = file_get_contents("post.html");
                     /*
                         PLACEHOLDER:
 
@@ -79,50 +78,36 @@
                         %%CURRENTPAGE%% = name of current page
                         %%LINK%% = link
                         %%TITLE%% = title of post
+
+                        %%INPUT_NAME%% = name of ratepost
+                        %%INPUT_VALUE%% = placeholder for ratepost action
                     */
+                    $post_template = file_get_contents("post.html");
 
                     foreach($paginator->getResults() as $item) {
-                        /*
                         $post_filled = $post_template;
-                        $post_filled = str_replace("%%THUMBNAIL_PATH%%", $item['imgpath'], $post_filled);
+
                         $post_filled = str_replace("%%POSTID%%", $item['id'], $post_filled);
                         $post_filled = str_replace("%%CURRENTPAGE%%", $currentpage, $post_filled);
                         $post_filled = str_replace("%%LINK%%", $item['link'], $post_filled);
                         $post_filled = str_replace("%%TITLE%%", $item['title'], $post_filled);
+                    
+                        if(file_exists($item['imgpath'])) {
+                            $post_filled = str_replace("%%THUMBNAIL_PATH%%", $item['imgpath'], $post_filled);
+                        } else {
+                            $post_filled = str_replace("%%THUMBNAIL_PATH%%", THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg", $post_filled);
+                        }
+
+                        if($post->isLikedByUser($item['id'], @$session->get('uid'))) {
+                            $post_filled = str_replace("%%INPUT_NAME%%", "unlike", $post_filled);
+                            $post_filled = str_replace("%%INPUT_VALUE%%", "Unlike", $post_filled);
+                        } else {
+                            $post_filled = str_replace("%%INPUT_NAME%%", "like", $post_filled);
+                            $post_filled = str_replace("%%INPUT_VALUE%%", "Liken", $post_filled);
+                        }
 
                         echo $post_filled;
                         $post_filled = $post_template;
-                        */
-                    
-                        if(file_exists($item['imgpath'])) {
-                            echo '<img width="150" src="' . $item['imgpath'] . '">';
-                            //$post_filled = str_replace("%%THUMBNAIL_PATH%%", $item['imgpath'], $post_filled);
-                        } else {
-                            echo '<img width="150" src="' . THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg" . '">';
-                            //$post_filled = str_replace("%%THUMBNAIL_PATH%%", THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg", $post_filled);
-                        }
-
-                        //$post_filled = $post_template;
-
-                        echo "<br>";
-                        echo '<a href="' . $item['link'] . '" URL target="blank">' . $item['title'] . '</a>';
-                        echo "<br>";
-                        //if post is not liked -> display like else display unlike
-                        echo '<form action="logic.php?action=ratepost" method="post">';
-                        echo '<input name="postid" type="hidden" value=' . $item['id'] . '>';
-                        echo '<input name="currentpage" type="hidden" value=' . $currentpage . '>';
-                        if($post->isLikedByUser($item['id'], @$session->get('uid'))) {
-                            echo '<input name="unlike" type="submit" value="unlike">';
-                        } else {
-                            echo '<input name="like" type="submit" value="like">';
-                        }
-                        echo '</form>';
-                        echo '<form action="reportpost.php" method="post">';
-                        echo '<input name="postid" type="hidden" value=' . $item['id'] . '>';
-                        echo '<input name="report" type="submit" value="report">';
-                        echo '</form>';
-
-                        echo "<br><br><br>";
                     }
                 ?>
             </div>
