@@ -41,31 +41,12 @@
         </div>
         <div class="content">
             <div class="posts">
-                <!--div class="post">
-                    <div class="top">
-                        <div class="thumbnail">
-                            <img src="img/post_template-v1.png">  
-                        </div>
-                        <div class="actions">
-                            <form action="" method="post">
-                                <input type="submit" value="like">
-                            </form>
-                            <form action="" method="">
-                                <input type="submit" value="report">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="bot">
-                        <a href="link">Titel</a>
-                    </div>
-                </div-->
-
                 <?php
                     displayMessageOrError();
 
                     /* Initializes the Paginator */
                     $paginator = new Paginator($pdo);
-                    $paginator->setLimit(15);
+                    $paginator->setLimit(20);
 
                     $post = new Post($pdo);
                     $currentpage = basename(__FILE__, '.php'); 
@@ -82,6 +63,7 @@
                         %%INPUT_NAME%% = name of ratepost
                         %%INPUT_VALUE%% = placeholder for ratepost action
                     */
+                    
                     $post_template = file_get_contents("post.html");
 
                     foreach($paginator->getResults() as $item) {
