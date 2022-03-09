@@ -10,7 +10,7 @@
         <title>Cuminsi.de</title>
     </head>
     <body>
-        <div class="header">
+        <header>
             <div class="column left">
                 <?php
                     if($session->isset()) {
@@ -38,8 +38,8 @@
                     }
                 ?>
             </div>
-        </div>
-        <div class="content">
+        </header>
+        <main>
             <div class="posts">
                 <?php
                     displayMessageOrError();
@@ -92,13 +92,13 @@
                     }
                 ?>
             </div>
-        </div>
-        <div class="footer">
+        </main>
+        <footer>
             <?php 
                 //shows the paginator bar
                 $paginator->show(); 
             ?>
             <p>Impressum und so</p>
-        </div>
+        </footer>
     </body>
 </html>
