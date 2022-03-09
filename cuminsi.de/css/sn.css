@@ -35,7 +35,11 @@ html, body {
     height: 100%;
     margin: 0px;
 }
+html {
+    height: auto;
+}
 body {
+    height: auto;
     background: rgb(27, 27, 27);
 }
 
@@ -80,30 +84,28 @@ header .column.right {
 
 /* Content */
 main {
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    /*align-items: center;*/
+    min-height: 80%;
+    height: auto;
     border: 2px solid green;
 }
+.paginator {
+    height: 20%;
+}
 .posts {
+    width: calc(100% - 2*20px);
+    height: 80%;
     display: flex;
-    /*
-    justify-content: space-around;    
-    flex-direction: row;
-    */
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-wrap: wrap;
     
     padding: 20px;
-    width: calc(100% - 2*20px);
-    height: calc(100% - 2*20px);
 }
 .post {
     border: 2px solid red;
     height: 200px;
     width: 300px;
     margin: 20px;
+    margin-left: 45px;
 }
 .post .top {
     display: flex;

@@ -46,7 +46,7 @@
 
                     /* Initializes the Paginator */
                     $paginator = new Paginator($pdo);
-                    $paginator->setLimit(15);
+                    $paginator->setLimit(20);
 
                     $post = new Post($pdo);
                     $currentpage = basename(__FILE__, '.php'); 
@@ -92,12 +92,14 @@
                     }
                 ?>
             </div>
+            <div class="paginator">
+                <?php 
+                    //shows the paginator bar
+                    $paginator->show(); 
+                ?>
+            </div>
         </main>
         <footer>
-            <?php 
-                //shows the paginator bar
-                $paginator->show(); 
-            ?>
             <p>Impressum und so</p>
         </footer>
     </body>
