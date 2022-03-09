@@ -2,4 +2,5 @@
 db.php
 
 #User Thumbnail uploads
-uploads/thumbnails/u*.*
+uploads/thumbnails/u*.png
+uploads/thumbnails/u*.jpeg
