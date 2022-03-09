@@ -1,3 +1,5 @@
 #DB-Connection Information
 db.php
+
+#User Thumbnail uploads
 uploads/thumbnails/u*.*
