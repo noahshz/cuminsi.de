@@ -81,12 +81,11 @@
                         }
 
                         if($post->isLikedByUser($item['id'], @$session->get('uid'))) {
-                            $post_filled = str_replace("%%INPUT_NAME%%", "unlike", $post_filled);
-                            $post_filled = str_replace("%%INPUT_VALUE%%", "Unlike", $post_filled);
+                            $rate_input = '<input name="unlike" type="submit" value="Unlike">';
                         } else {
-                            $post_filled = str_replace("%%INPUT_NAME%%", "like", $post_filled);
-                            $post_filled = str_replace("%%INPUT_VALUE%%", "Liken", $post_filled);
+                            $rate_input = '<input name="like" type="submit" value="Liken">';
                         }
+                        $post_filled = str_replace("%%RATE_ACTION%%", $rate_input, $post_filled);
 
                         echo $post_filled;
                         $post_filled = $post_template;
