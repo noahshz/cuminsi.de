@@ -83,7 +83,7 @@ input {
     height: 80%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /*align-items: center;*/
     border: 2px solid green;
 }
 .posts {
@@ -97,13 +97,12 @@ input {
     
     padding: 20px;
     width: calc(100% - 2*20px);
-    height: calc(100% - 2*20px);
+    /*height: calc(100% - 2*20px);*/
 }
 .post {
     border: 2px solid red;
     height: 200px;
     width: 300px;
-    margin: 20px;
     margin-right: 34px;
     margin-left: 33px;
 }
