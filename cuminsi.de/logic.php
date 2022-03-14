@@ -295,7 +295,7 @@
             //Step 3 + 4
             if(!isset($_POST['title']) && !isset($_POST['link'])) {
                 $title = "[empty title]";
-                $link = "cuminsi.de";
+                $link = "https://cuminsi.de";
             } else {
                 $title = $_POST['title'];
                 $link = $_POST['link'];
