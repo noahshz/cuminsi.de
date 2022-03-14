@@ -280,7 +280,6 @@
                 Step 2: check if user is verified
                 Step 3: create post in db
                 Step 4: upload img to server 
-
             */
             $session = new Session();
             //$user = new User($pdo);
