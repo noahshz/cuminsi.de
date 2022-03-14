@@ -331,6 +331,7 @@
             /*
                 checke, ob die aktive session id mit der uid vom post übereinstimmt
             */
+            
             if($session->get('uid') != $post->getInfos($_GET['postid'])[0]['uid']) {
                 //der angemeldete user stimmt nicht mit dem ersteller überein
                 header('Location: postmanagement.php?error_code=7002');
