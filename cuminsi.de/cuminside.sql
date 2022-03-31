@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 03. Mrz 2022 um 11:28
+-- Erstellungszeit: 31. Mrz 2022 um 09:42
 -- Server-Version: 10.4.21-MariaDB
 -- PHP-Version: 8.0.12
 
@@ -29,6 +29,7 @@ USE `cuminside`;
 -- Tabellenstruktur für Tabelle `adm_reportedposts`
 --
 
+DROP TABLE IF EXISTS `adm_reportedposts`;
 CREATE TABLE `adm_reportedposts` (
   `id` int(255) NOT NULL,
   `postid` int(255) NOT NULL,
@@ -41,12 +42,14 @@ CREATE TABLE `adm_reportedposts` (
 -- Tabellenstruktur für Tabelle `posts`
 --
 
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `uid` int(255) NOT NULL,
   `title` varchar(100) NOT NULL,
   `link` text NOT NULL,
-  `imgpath` varchar(255) NOT NULL
+  `imgpath` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -55,13 +58,15 @@ CREATE TABLE `posts` (
 -- Tabellenstruktur für Tabelle `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(99) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `verification_code` varchar(255) NOT NULL,
-  `verified` varchar(255) NOT NULL
+  `verified` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -70,6 +75,7 @@ CREATE TABLE `users` (
 -- Tabellenstruktur für Tabelle `users_posts_liked`
 --
 
+DROP TABLE IF EXISTS `users_posts_liked`;
 CREATE TABLE `users_posts_liked` (
   `id` int(255) NOT NULL,
   `uid` int(255) NOT NULL,

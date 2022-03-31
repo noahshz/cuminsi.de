@@ -96,6 +96,8 @@ main {
     
     padding: 20px;
 }
+
+/* Post */
 .post {
     border: 2px solid red;
     height: 200px;
