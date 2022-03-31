@@ -4,19 +4,30 @@
 
     $post = new Post($pdo);
 
+    $post_template = file_get_contents("post.html");
+
     foreach($post->getUserPosts($session->get('uid')) as $item) {
+        $post_filled = $post_template;
+
+        $post_filled = str_replace("%%POSTID%%", $item['id'], $post_filled);
+        $post_filled = str_replace("%%CURRENTPAGE%%", $currentpage, $post_filled);
+        $post_filled = str_replace("%%LINK%%", $item['link'], $post_filled);
+        $post_filled = str_replace("%%TITLE%%", $item['title'], $post_filled);
+    
         if(file_exists($item['imgpath'])) {
-            echo '<img width="150" src="' . $item['imgpath'] . '">';
+            $post_filled = str_replace("%%THUMBNAIL_PATH%%", $item['imgpath'], $post_filled);
         } else {
-            echo '<img width="150" src="' . THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg" . '">';
+            $post_filled = str_replace("%%THUMBNAIL_PATH%%", THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg", $post_filled);
         }
 
-        echo "<br>";
-        echo '<a href="' . $item['link'] . '" target="blank">' . $item['title'] . '</a>';
-        echo "<br>";
-        echo '<a href="editpost.php?postid=' . $item['id'] . '">Bearbeiten</a>';
-        echo "<br>";
-        echo '<a href="logic.php?action=deletepost&postid=' . $item['id'] . '">Löschen</a>';
-        echo "<br><br><br>";
+        if($post->isLikedByUser($item['id'], @$session->get('uid'))) {
+            $rate_input = '<input id="unlike" name="unlike" type="submit" value="&#9829">';
+        } else {
+            $rate_input = '<input id="like" name="like" type="submit" value="&#9829">';
+        }
+        $post_filled = str_replace("%%RATE_ACTION%%", $rate_input, $post_filled);
+
+        echo $post_filled;
+        $post_filled = $post_template;
     }
 ?>
