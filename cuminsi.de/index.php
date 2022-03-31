@@ -81,9 +81,9 @@
                         }
 
                         if($post->isLikedByUser($item['id'], @$session->get('uid'))) {
-                            $rate_input = '<input name="unlike" type="submit" value="Unlike">';
+                            $rate_input = '<input id="unlike" name="unlike" type="submit" value="&#9829">';
                         } else {
-                            $rate_input = '<input name="like" type="submit" value="Liken">';
+                            $rate_input = '<input id="like" name="like" type="submit" value="&#9829">';
                         }
                         $post_filled = str_replace("%%RATE_ACTION%%", $rate_input, $post_filled);
 

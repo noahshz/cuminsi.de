@@ -127,6 +127,44 @@ main {
     height: 90%;
 }
 
+input#like {
+    background: none;
+    border: none;
+    font-size: 50px;
+    color: white;
+    transform: scaleX(1.2);
+    padding: 0;
+    text-align: center;
+}
+input#like:hover {
+    background: none;
+    border: none;
+    font-size: 50px;
+    color: rgb(155, 155, 155);
+    transform: scaleX(1.2);
+    padding: 0;
+    text-align: center;
+}
+
+input#unlike {
+    background: none;
+    border: none;
+    font-size: 50px;
+    color: rgb(196, 16, 16);
+    transform: scaleX(1.2);
+    padding: 0;
+    text-align: center;
+}
+input#unlike:hover {
+    background: none;
+    border: none;
+    font-size: 50px;
+    color: rgb(153, 28, 28);
+    transform: scaleX(1.2);
+    padding: 0;
+    text-align: center;
+}
+
 /* Footer */
 footer {
     height: 8%;

@@ -4,31 +4,30 @@
 
     $post = new Post($pdo);
 
+    $post_template = file_get_contents("post.html");
+
     foreach($post->getLikedPosts($session->get('uid')) as $item) {
+        $post_filled = $post_template;
+
+        $post_filled = str_replace("%%POSTID%%", $item['id'], $post_filled);
+        $post_filled = str_replace("%%CURRENTPAGE%%", $currentpage, $post_filled);
+        $post_filled = str_replace("%%LINK%%", $item['link'], $post_filled);
+        $post_filled = str_replace("%%TITLE%%", $item['title'], $post_filled);
+    
         if(file_exists($item['imgpath'])) {
-            echo '<img width="150" src="' . $item['imgpath'] . '">';
+            $post_filled = str_replace("%%THUMBNAIL_PATH%%", $item['imgpath'], $post_filled);
         } else {
-            echo '<img width="150" src="' . THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg" . '">';
+            $post_filled = str_replace("%%THUMBNAIL_PATH%%", THUMBNAIL_UPLOAD_FOLDER . "thumbnail_placeholder.jpg", $post_filled);
         }
 
-        echo "<br>";
-        echo '<a href="' . $item['link'] . '" URL target="blank">' . $item['title'] . '</a>';
-        echo "<br>";
-        //if post is not liked -> display like else display unlike
-        echo '<form action="logic.php?action=ratepost" method="post">';
-        echo '<input name="postid" type="hidden" value=' . $item['id'] . '>';
-        echo '<input name="currentpage" type="hidden" value=' . $currentpage . '>';
-        if($post->isLikedByUser($item['id'], $session->get('uid'))) {
-            echo '<input name="unlike" type="submit" value="unlike">';
+        if($post->isLikedByUser($item['id'], @$session->get('uid'))) {
+            $rate_input = '<input id="unlike" name="unlike" type="submit" value="&#9829">';
         } else {
-            echo '<input name="like" type="submit" value="like">';
+            $rate_input = '<input id="like" name="like" type="submit" value="&#9829">';
         }
-        echo '</form>';
-        echo '<form action="reportpost.php" method="post">';
-        echo '<input name="postid" type="hidden" value=' . $item['id'] . '>';
-        echo '<input name="report" type="submit" value="report">';
-        echo '</form>';
+        $post_filled = str_replace("%%RATE_ACTION%%", $rate_input, $post_filled);
 
-        echo "<br><br><br>";
+        echo $post_filled;
+        $post_filled = $post_template;
     }
 ?>
