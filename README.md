@@ -4,6 +4,7 @@ work in progress
 
 ## ToDo's:
 
+- !!!!!! - EDIT POST ACTION - wieder einbauen - !!!!!
 - create forgot/reset/change password function
 - error messages: as link with redirection to index.php or login.php etc withozut error code
 - do shitty css
